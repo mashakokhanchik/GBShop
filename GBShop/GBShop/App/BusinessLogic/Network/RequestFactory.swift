@@ -9,9 +9,11 @@ import Foundation
 import Alamofire
 
 class RequestFactory {
+    
     func makeErrorParser() -> AbstractErrorParser {
         return ErrorParser()
     }
+    
     lazy var commonSession: Session = {
         let configuretion = URLSessionConfiguration.default
         configuretion.httpShouldSetCookies = false
@@ -28,4 +30,5 @@ class RequestFactory {
                     sessionManager: commonSession,
                     queue: sessionQueue)
     }
+    
 }

@@ -14,6 +14,9 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         login()
+        registration()
+        changeUserData()
+        logout()
     }
     
     func login() {
@@ -28,9 +31,41 @@ class ViewController: UIViewController {
         }
     }
     
-//    func singin() {}
-//    func changeUserData() {}
-//    func logout(){}
+    func registration() {
+        let registration = requestFactory.makeAuthRequestFactory()
+        registration.registration(userName: "Somebody", password: "mypassword", email: "some@some.ru") { response in
+            switch response.result {
+            case .success(let registration):
+                print(registration)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func changeUserData() {
+        let changeUserData = requestFactory.makeAuthRequestFactory()
+        changeUserData.changeUserData(userName: "Somebody", passord: "mypassword", email: "some@some.ru") { response in
+            switch response.result {
+            case .success(let changeUserData):
+                print(changeUserData)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func logout() {
+        let auth = requestFactory.makeAuthRequestFactory()
+        auth.logout(userId: "123") { response in
+            switch response.result {
+            case .success(let result):
+                print(result)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
 
 }
 
