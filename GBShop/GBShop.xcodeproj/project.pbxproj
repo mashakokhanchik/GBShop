@@ -215,6 +215,8 @@
 		E18C4B6726C7BE2400DC9ACC /* App */ = {
 			isa = PBXGroup;
 			children = (
+				E14BBBFA26B95BE500AD6A0B /* AppDelegate.swift */,
+				E14BBBFC26B95BE500AD6A0B /* SceneDelegate.swift */,
 				E18C4B6826C7BE3000DC9ACC /* BusinessLogic */,
 				E18C4B6B26C7BE6000DC9ACC /* Entity */,
 				E18C4B6A26C7BE5A00DC9ACC /* Assembly */,
@@ -226,8 +228,6 @@
 		E18C4B6826C7BE3000DC9ACC /* BusinessLogic */ = {
 			isa = PBXGroup;
 			children = (
-				E14BBBFA26B95BE500AD6A0B /* AppDelegate.swift */,
-				E14BBBFC26B95BE500AD6A0B /* SceneDelegate.swift */,
 				E18C4B7D26C7CDCD00DC9ACC /* Network */,
 			);
 			path = BusinessLogic;

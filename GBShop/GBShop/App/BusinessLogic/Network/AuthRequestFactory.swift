@@ -18,10 +18,6 @@ protocol AuthRequestFactory {
                       password: String,
                       email: String,
                       completionHandler: @escaping (AFDataResponse<RegistrationResult>) -> Void)
-
-//    func changeUserData(oldData: User,
-//                        newData: User,
-//                        completionHandler: @escaping (AFDataResponse<ChangeUserDataResult>) -> Void)
     
     func changeUserData(userName: String,
                         passord: String,
