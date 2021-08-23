@@ -17,7 +17,11 @@ class ViewController: UIViewController {
         registration()
         changeUserData()
         logout()
+        getCatalogData()
+        getGoodsById()
     }
+
+//MARK: - Authentication functions
     
     func login() {
         let auth = requestFactory.makeAuthRequestFactory()
@@ -61,6 +65,34 @@ class ViewController: UIViewController {
             switch response.result {
             case .success(let result):
                 print(result)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+//MARK: - Сatalog functions
+    
+    func getCatalogData() {
+        let getCatalogData = requestFactory.makeCatalogDataRequestFactory()
+        getCatalogData.getCatalogData(pageNumber: "1", idCategory: "1") { response in
+            switch response.result {
+            case .success(let getCatalogData):
+                print(getCatalogData)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+//MARK: - GoodsById functions
+    
+    func getGoodsById() {
+        let getGoodsById = requestFactory.makeGoodsByIdFactory()
+        getGoodsById.getGoodsById(id: "123") { response in
+            switch response.result {
+            case .success(let getGoodsById):
+                print(getGoodsById)
             case .failure(let error):
                 print(error.localizedDescription)
             }
