@@ -13,26 +13,17 @@ class Auth: AbstractRequestFactory {
     let errorParser: AbstractErrorParser
     let sessionManager: Session
     let queue: DispatchQueue
-    let baseUrl = URL(string: "https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/")!
-    
-// Пока ищу вариант как правльно разбить на компоненты
-    
-//    let baseUrl = URLComponents()
-//    baseUrl.shreme = "https"
-//    baseUrl.host = "raw.githubusercontent.com"
-//    baseUrl.path = "/GeekBrainsTutorial/online-store-api/master/responses/"
-     
+    let baseUrl: URL
     
     init(errorParser: AbstractErrorParser,
          sessionManager: Session,
-         queue: DispatchQueue = DispatchQueue.global(qos: .utility)) {
+         queue: DispatchQueue = DispatchQueue.global(qos: .utility),
+         baseUrl: URL
+    ) {
         self.errorParser = errorParser
         self.sessionManager = sessionManager
         self.queue = queue
-        
-//        self.baseUrl.scheme = "https"
-//        self.baseUrl.host = "raw.githubusercontent.com"
-//        self.baseUrl.path = "/GeekBrainsTutorial/online-store-api/master/responses/"
+        self.baseUrl = baseUrl
     }
 }
 
@@ -43,7 +34,9 @@ extension Auth: AuthRequestFactory {
     func login(userName: String,
                password: String,
                completionHandler: @escaping (AFDataResponse<LoginResult>) -> Void) {
-        let requestModel = Login(baseUrl: baseUrl, login: userName, password: password)
+        let requestModel = Login(baseUrl: baseUrl,
+                                 login: userName,
+                                 password: password)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
 
@@ -51,7 +44,10 @@ extension Auth: AuthRequestFactory {
                       password: String,
                       email: String,
                       completionHandler: @escaping (AFDataResponse<RegistrationResult>) -> Void) {
-        let requestModel = Registration(baseUrl: baseUrl, login: userName, password: password, email: email)
+        let requestModel = Registration(baseUrl: baseUrl,
+                                        login: userName,
+                                        password: password,
+                                        email: email)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
@@ -59,7 +55,10 @@ extension Auth: AuthRequestFactory {
                         passord: String,
                         email: String,
                         completionHandler: @escaping (AFDataResponse<ChangeUserDataResult>) -> Void) {
-        let requestModel = ChangeUserData(baseUrl: baseUrl, login: userName, password: passord, email: email)
+        let requestModel = ChangeUserData(baseUrl: baseUrl,
+                                          login: userName,
+                                          password: passord,
+                                          email: email)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
