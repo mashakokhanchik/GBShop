@@ -31,7 +31,7 @@ extension CatalogData: CatalogDataRequestFactory {
     
     func getCatalogData(pageNumber: String,
                         idCategory: String,
-                        completionHandler: @escaping (AFDataResponse<CatalogDataResult>) -> Void) {
+                        completionHandler: @escaping (AFDataResponse<[CatalogDataResult]>) -> Void) {
         let requestModel = CatalogDataRequest(baseUrl: baseUrl,
                                               pageNumber: pageNumber,
                                               idCategory: idCategory)
