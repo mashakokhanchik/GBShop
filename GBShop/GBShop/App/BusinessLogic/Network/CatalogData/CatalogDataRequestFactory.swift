@@ -11,5 +11,5 @@ import Alamofire
 protocol CatalogDataRequestFactory {
     func getCatalogData(pageNumber: String,
                         idCategory: String,
-                        completionHandler: @escaping (AFDataResponse<[CatalogDataResult]>) -> Void)
+                        completionHandler: @escaping (AFDataResponse<CatalogDataResult>) -> Void)
     }

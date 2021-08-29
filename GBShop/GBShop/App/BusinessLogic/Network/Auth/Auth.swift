@@ -13,17 +13,25 @@ class Auth: AbstractRequestFactory {
     let errorParser: AbstractErrorParser
     let sessionManager: Session
     let queue: DispatchQueue
-    let baseUrl: URL
+    let baseUrl = URL(string: "http://127.0.0.1:8080")!
+
+//Если разбивать на компоненты, не могу получить ответ от сервера, выдает ошибку, ищу как исправить
+    
+    //    lazy var baseUrl: URL? = {
+    //    var components = URLComponents()
+    //    components.scheme = "https"
+    //    components.host = "127.0.0.1:8080"//raw.githubusercontent.com"
+    //    components.path = "registration"//"/GeekBrainsTutorial/online-store-api/master/responses/"
+    //    return components.url
+    //    }()
     
     init(errorParser: AbstractErrorParser,
          sessionManager: Session,
-         queue: DispatchQueue = DispatchQueue.global(qos: .utility),
-         baseUrl: URL
+         queue: DispatchQueue = DispatchQueue.global(qos: .utility)
     ) {
         self.errorParser = errorParser
         self.sessionManager = sessionManager
         self.queue = queue
-        self.baseUrl = baseUrl
     }
 }
 
@@ -76,8 +84,8 @@ extension Auth {
     
     struct Login: RequestRouter {
         let baseUrl: URL
-        let method: HTTPMethod = .get
-        let path: String = "login.json"
+        let method: HTTPMethod = .post
+        let path: String = "login"
         
         let login: String
         let password: String
@@ -89,8 +97,8 @@ extension Auth {
 
     struct Registration: RequestRouter {
         let baseUrl: URL
-        let method: HTTPMethod = .get
-        let path: String = "registerUser.json"
+        let method: HTTPMethod = .post
+        let path: String = "registration"
         
         let login: String
         let password: String
@@ -104,8 +112,8 @@ extension Auth {
     
     struct ChangeUserData: RequestRouter{
         let baseUrl: URL
-        let method: HTTPMethod = .get
-        let path: String = "changeUserData.json"
+        let method: HTTPMethod = .post
+        let path: String = "changeUserData"
         
         let login: String
         let password: String
@@ -119,12 +127,12 @@ extension Auth {
     
     struct Logout: RequestRouter {
         let baseUrl: URL
-        let method: HTTPMethod = .get
-        let path: String = "logout.json"
+        let method: HTTPMethod = .post
+        let path: String = "logout"
         
         let userId: String
         var parameters: Parameters? {
-            return ["id_user": userId]
+            return ["userId": userId]
         }
     }
 }
