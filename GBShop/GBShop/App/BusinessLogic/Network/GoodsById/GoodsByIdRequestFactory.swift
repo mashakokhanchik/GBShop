@@ -9,5 +9,5 @@ import Foundation
 import Alamofire
 
 protocol GoodsByIdRequestFactory {
-    func getGoodsById(id: String, completionHandler: @escaping(AFDataResponse<GoodsByIdResult>) -> Void)
+    func getGoodsById(idProduct: String, completionHandler: @escaping(AFDataResponse<GoodsByIdResult>) -> Void)
 }

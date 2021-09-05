@@ -63,8 +63,8 @@ class ViewController: UIViewController {
         let auth = requestFactory.makeAuthRequestFactory()
         auth.logout(userId: "123") { response in
             switch response.result {
-            case .success(let result):
-                print(result)
+            case .success(let logout):
+                print(logout)
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -89,7 +89,7 @@ class ViewController: UIViewController {
     
     func getGoodsById() {
         let getGoodsById = requestFactory.makeGoodsByIdFactory()
-        getGoodsById.getGoodsById(id: "123") { response in
+        getGoodsById.getGoodsById(idProduct: "123") { response in
             switch response.result {
             case .success(let getGoodsById):
                 print(getGoodsById)

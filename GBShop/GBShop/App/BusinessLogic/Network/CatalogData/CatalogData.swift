@@ -13,17 +13,15 @@ class CatalogData: AbstractRequestFactory {
     let errorParser: AbstractErrorParser
     let sessionManager: Session
     let queue: DispatchQueue
-    let baseUrl: URL
+    let baseUrl = URL(string: "http://127.0.0.1:8080")!
     
     init(errorParser: AbstractErrorParser,
          sessionManager: Session,
-         queue: DispatchQueue = DispatchQueue.global(qos: .utility),
-         baseUrl: URL
+         queue: DispatchQueue = DispatchQueue.global(qos: .utility)
     ) {
         self.errorParser = errorParser
         self.sessionManager = sessionManager
         self.queue = queue
-        self.baseUrl = baseUrl
     }
 }
 
@@ -43,14 +41,14 @@ extension CatalogData {
 
     struct CatalogDataRequest: RequestRouter {
         let baseUrl: URL
-        let method: HTTPMethod = .get
-        let path: String = "catalogData.json"
+        let method: HTTPMethod = .post
+        let path: String = "catalogData"
         
         let pageNumber: String
         let idCategory: String
         var parameters: Parameters? {
-            return ["page_number": pageNumber,
-                    "id_category": idCategory]
+            return ["pageNumber": pageNumber,
+                    "idCategory": idCategory]
         }
     }
     
