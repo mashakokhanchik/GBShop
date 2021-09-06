@@ -9,15 +9,17 @@ import Foundation
 import Alamofire
 
 class RequestFactory {
+    
+/*Если URL разбиваю на компоненты, то в функциях всё равно ипользую !, решение проблемы пока не нашла.
+Как провильно вынести baseUrl в Core-слой тоже пока не разобралась.*/
 
-//Перенесла данные URL, еще разбираюсь как исправить baseUrl!
+//    lazy var baseUrl = URL(string: "https://protected-bayou-45049.herokuapp.com")!
     
     lazy var baseUrl: URL? = {
-    var components = URLComponents()
-    components.scheme = "https"
-    components.host = "raw.githubusercontent.com"
-    components.path = "/GeekBrainsTutorial/online-store-api/master/responses/"
-    return components.url
+        var components = URLComponents()
+        components.scheme = "https"
+        components.host = "protected-bayou-45049.herokuapp.com"
+        return components.url
     }()
     
     func makeErrorParser() -> AbstractErrorParser {
@@ -56,6 +58,14 @@ class RequestFactory {
                          sessionManager:commonSession,
                          queue: sessionQueue,
                          baseUrl: baseUrl!)
+    }
+    
+    func makeReviewsFactory() -> ReviewsRequestFactory {
+        let errorParser = makeErrorParser()
+        return Reviews(errorParser: errorParser,
+                       sessionManager: commonSession,
+                       queue: sessionQueue,
+                       baseUrl: baseUrl!)
     }
     
 }

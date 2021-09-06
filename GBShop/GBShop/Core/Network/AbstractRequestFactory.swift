@@ -8,6 +8,8 @@
 import Foundation
 import Alamofire
 
+///Фабрика, отвечающая за создание запросов.
+
 protocol AbstractRequestFactory {
     
     var errorParser: AbstractErrorParser { get }
@@ -17,6 +19,7 @@ protocol AbstractRequestFactory {
     @discardableResult
     func request<T: Decodable>(request: URLRequestConvertible,
                                completionHandler: @escaping (AFDataResponse<T>) -> Void) -> DataRequest
+
 }
 
 extension AbstractRequestFactory {
@@ -30,4 +33,5 @@ extension AbstractRequestFactory {
                                  queue: queue,
                                  completionHandler: completionHandler)
     }
+    
 }

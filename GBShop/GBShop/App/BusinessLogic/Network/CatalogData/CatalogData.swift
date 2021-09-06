@@ -8,6 +8,8 @@
 import Foundation
 import Alamofire
 
+///Реализация протокола получения списка товаров.
+
 class CatalogData: AbstractRequestFactory {
     
     let errorParser: AbstractErrorParser
@@ -25,9 +27,12 @@ class CatalogData: AbstractRequestFactory {
         self.queue = queue
         self.baseUrl = baseUrl
     }
+
 }
 
 extension CatalogData: CatalogDataRequestFactory {
+    
+    //Получение списка товаров
     
     func getCatalogData(pageNumber: String,
                         idCategory: String,
@@ -37,20 +42,23 @@ extension CatalogData: CatalogDataRequestFactory {
                                               idCategory: idCategory)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
+
 }
     
 extension CatalogData {
+    
+    //Параметры и путь к запросу для получения списка товаров.
 
     struct CatalogDataRequest: RequestRouter {
         let baseUrl: URL
-        let method: HTTPMethod = .get
-        let path: String = "catalogData.json"
+        let method: HTTPMethod = .post
+        let path: String = "catalogData"
         
         let pageNumber: String
         let idCategory: String
         var parameters: Parameters? {
-            return ["page_number": pageNumber,
-                    "id_category": idCategory]
+            return ["pageNumber": pageNumber,
+                    "idCategory": idCategory]
         }
     }
     

@@ -8,20 +8,28 @@
 import Foundation
 
 struct LoginResult: Codable {
+    
     let result: Int
     let user: User
+
 }
 
 struct RegistrationResult: Codable {
+   
     let result: Int
     let userMessage: String
+
 }
 
 struct ChangeUserDataResult: Codable {
+    
     let result: Int
+
 }
 
 struct LogoutResult: Codable {
+    
     let result: Int
+
 }
 

@@ -8,6 +8,8 @@
 import Foundation
 import Alamofire
 
+///Протокол реализациии аутентификации личного кабинета.
+
 protocol AuthRequestFactory {
     
     func login(userName: String,
@@ -26,4 +28,5 @@ protocol AuthRequestFactory {
     
     func logout(userId: String,
                 completionHandler: @escaping (AFDataResponse<LogoutResult>) -> Void)
+
 }

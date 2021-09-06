@@ -8,7 +8,10 @@
 import Foundation
 import Alamofire
 
+///Реализация протокола получения отдельного товара.
+
 class GoodsById: AbstractRequestFactory {
+   
     let errorParser: AbstractErrorParser
     let sessionManager: Session
     let queue: DispatchQueue
@@ -24,27 +27,33 @@ class GoodsById: AbstractRequestFactory {
         self.queue = queue
         self.baseUrl = baseUrl
     }
+
 }
 
 extension GoodsById: GoodsByIdRequestFactory {
     
-    func getGoodsById(id: String, completionHandler: @escaping (AFDataResponse<GoodsByIdResult>) -> Void) {
-        let requestModel = GoodsByIdRequest(baseUrl: baseUrl, id: id)
+    //Получение отдельного товара
+    
+    func getGoodsById(idProduct: String, completionHandler: @escaping (AFDataResponse<GoodsByIdResult>) -> Void) {
+        let requestModel = GoodsByIdRequest(baseUrl: baseUrl, idProduct: idProduct)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
 }
 
 extension GoodsById {
     
+    //Параметры и путь к запросу получения отдельного товара.
+    
     struct GoodsByIdRequest: RequestRouter {
 
         let baseUrl: URL
-        let method: HTTPMethod = .get
-        let path: String = "getGoodById.json"
+        let method: HTTPMethod = .post
+        let path: String = "getGoodById"
     
-        let id: String
+        let idProduct: String
         var parameters: Parameters? {
-        return ["id_product": id]
+        return ["idProduct": idProduct]
         }
     }
+
 }

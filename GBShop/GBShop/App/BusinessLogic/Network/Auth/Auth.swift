@@ -8,6 +8,8 @@
 import Foundation
 import Alamofire
 
+///Реализация протокола аутентификации личного кабинета.
+
 class Auth: AbstractRequestFactory {
     
     let errorParser: AbstractErrorParser
@@ -31,6 +33,8 @@ class Auth: AbstractRequestFactory {
 
 extension Auth: AuthRequestFactory {
     
+    //Выполнение входа пользователя
+    
     func login(userName: String,
                password: String,
                completionHandler: @escaping (AFDataResponse<LoginResult>) -> Void) {
@@ -39,7 +43,9 @@ extension Auth: AuthRequestFactory {
                                  password: password)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
-
+    
+    //Регистрация пользоввателя
+    
     func registration(userName: String,
                       password: String,
                       email: String,
@@ -51,6 +57,8 @@ extension Auth: AuthRequestFactory {
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
+    //Изменение личных данных пользователя
+    
     func changeUserData(userName: String,
                         passord: String,
                         email: String,
@@ -61,6 +69,8 @@ extension Auth: AuthRequestFactory {
                                           email: email)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
+    
+    //Реализация выхода пользователя
     
     func logout(userId: String,
                 completionHandler: @escaping (AFDataResponse<LogoutResult>) -> Void) {
@@ -74,10 +84,13 @@ extension Auth: AuthRequestFactory {
 
 extension Auth {
     
+    //Параметры и путь к запросу входа пользователя в личный кабинет.
+    
     struct Login: RequestRouter {
+        
         let baseUrl: URL
-        let method: HTTPMethod = .get
-        let path: String = "login.json"
+        let method: HTTPMethod = .post
+        let path: String = "login"
         
         let login: String
         let password: String
@@ -86,11 +99,14 @@ extension Auth {
                     "password": password]
         }
     }
+    
+    //Параметры и путь к запросу на регистрацию пользователя.
 
     struct Registration: RequestRouter {
+        
         let baseUrl: URL
-        let method: HTTPMethod = .get
-        let path: String = "registerUser.json"
+        let method: HTTPMethod = .post
+        let path: String = "registration"
         
         let login: String
         let password: String
@@ -101,11 +117,14 @@ extension Auth {
                     "email": email]
         }
     }
+    
+    //Параетры и путь к запросу на изменение личных данных пользователя.
     
     struct ChangeUserData: RequestRouter{
+        
         let baseUrl: URL
-        let method: HTTPMethod = .get
-        let path: String = "changeUserData.json"
+        let method: HTTPMethod = .post
+        let path: String = "changeUserData"
         
         let login: String
         let password: String
@@ -117,14 +136,18 @@ extension Auth {
         }
     }
     
+    //Параметры и путь к запросу выхода пользователя из личного кабинета.
+    
     struct Logout: RequestRouter {
+        
         let baseUrl: URL
-        let method: HTTPMethod = .get
-        let path: String = "logout.json"
+        let method: HTTPMethod = .post
+        let path: String = "logout"
         
         let userId: String
         var parameters: Parameters? {
-            return ["id_user": userId]
+            return ["userId": userId]
         }
     }
+
 }
