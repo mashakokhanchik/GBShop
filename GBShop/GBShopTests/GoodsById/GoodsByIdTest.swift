@@ -19,7 +19,7 @@ class GoodsByIdTest: XCTestCase {
         try super.tearDownWithError()
     }
 
-    func testExample() throws {
+    func testGoodsById() throws {
         
         let baseUrl = try XCTUnwrap(URL(string: "https://failUrl"))
         

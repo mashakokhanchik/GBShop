@@ -68,4 +68,12 @@ class RequestFactory {
                        baseUrl: baseUrl!)
     }
     
+    func makeBasketFactory() -> BasketRequestFactory {
+        let errorParser = makeErrorParser()
+        return Basket(errorParser: errorParser,
+                      sessionManager: commonSession,
+                      queue: sessionQueue,
+                      baseUrl: baseUrl!)
+    }
+    
 }

@@ -22,6 +22,9 @@ class ViewController: UIViewController {
         getReview()//Получение списка отзывов о товаре
         addReview()//Добавление отзыва о товаре
         removeReview()//Удаление отзыва о товаре
+        addToBasket()//Добавление товара в корзину
+        deleteFromBasket()//Удаление товара из корзины
+        payBasket()//Списание денежных средств
     }
 
 //MARK: - Authentication functions
@@ -134,6 +137,44 @@ class ViewController: UIViewController {
             switch response.result {
             case .success(let removeReview):
                 print(removeReview)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+// MARK: - Basket functions
+    
+    func addToBasket() {
+        let addToBasket = requestFactory.makeBasketFactory()
+        addToBasket.addToBasket(idProduct: 1, quantity: 1) { response in
+            switch response.result {
+            case .success(let addToBasket):
+                print(addToBasket)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func deleteFromBasket() {
+        let deleteFromBasket = requestFactory.makeBasketFactory()
+        deleteFromBasket.deleteFromBasket(idProduct: 1) { response in
+            switch response.result {
+            case .success(let deleteFromBasket):
+                print(deleteFromBasket)
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func payBasket() {
+        let payBasket = requestFactory.makeBasketFactory()
+        payBasket.payBasket(userId: 1, userMessage: "SomeMessage") { response in
+            switch response.result {
+            case .success(let payBasket):
+                print(payBasket)
             case .failure(let error):
                 print(error.localizedDescription)
             }
