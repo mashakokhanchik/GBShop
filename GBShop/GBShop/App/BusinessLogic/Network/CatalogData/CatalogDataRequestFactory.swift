@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-///Протокол получения списка товаров.
+/// Протокол получения списка товаров.
 
 protocol CatalogDataRequestFactory {
     

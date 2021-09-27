@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-///Протокол получения отдельного товара.
+/// Протокол получения отдельного товара.
 
 protocol GoodsByIdRequestFactory {
     

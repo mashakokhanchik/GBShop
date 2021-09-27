@@ -19,10 +19,9 @@ class ReviewsTest: XCTestCase {
         try super.tearDownWithError()
     }
     
-//MARK: - Get review test
+    // MARK: - Get review test
 
     func testGetReview() throws {
-        
         let baseUrl = try XCTUnwrap(URL(string: "https://failUrl"))
         
         let configuration = URLSessionConfiguration.default
@@ -31,8 +30,8 @@ class ReviewsTest: XCTestCase {
         let session = Session(configuration: configuration)
         
         let review = Reviews(errorParser: ErrorParser(),
-                            sessionManager: session,
-                            baseUrl: baseUrl)
+                             sessionManager: session,
+                             baseUrl: baseUrl)
         
         let reviewExpectation = expectation(description: "To get review")
         review.getReview(pageNumber: "1") { (response) in
@@ -46,10 +45,9 @@ class ReviewsTest: XCTestCase {
         wait(for: [reviewExpectation], timeout: 5.0)
     }
     
-//MARK: - Add review test
+    // MARK: - Add review test
 
     func testAddReview() throws {
-        
         let baseUrl = try XCTUnwrap(URL(string: "https://failUrl"))
         
         let configuration = URLSessionConfiguration.default
@@ -58,8 +56,8 @@ class ReviewsTest: XCTestCase {
         let session = Session(configuration: configuration)
         
         let review = Reviews(errorParser: ErrorParser(),
-                            sessionManager: session,
-                            baseUrl: baseUrl)
+                             sessionManager: session,
+                             baseUrl: baseUrl)
         
         let reviewExpectation = expectation(description: "To add review")
         review.addReview(userId: 1, userReview: "Some review") { (response) in
@@ -73,10 +71,9 @@ class ReviewsTest: XCTestCase {
         wait(for: [reviewExpectation], timeout: 5.0)
     }
     
-//MARK: - Remove review
+    // MARK: - Remove review
     
     func testRemoveReview() throws {
-        
         let baseUrl = try XCTUnwrap(URL(string: "https://failUrl"))
         
         let configuration = URLSessionConfiguration.default

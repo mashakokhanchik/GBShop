@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-///Реализация протокола работы с  отзывами о товаре.
+/// Реализация протокола работы с  отзывами о товаре.
 
 class Reviews: AbstractRequestFactory {
     
@@ -34,7 +34,7 @@ class Reviews: AbstractRequestFactory {
 
 extension Reviews: ReviewsRequestFactory {
     
-    //Получение списка отзывов о товаре
+    /// Получение списка отзывов о товаре
     
     func getReview(pageNumber: String,
                    completionHandler: @escaping (AFDataResponse<GetReviewResult>) -> Void) {
@@ -43,7 +43,7 @@ extension Reviews: ReviewsRequestFactory {
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
-    //Добавление отзыва о товаре
+    /// Добавление отзыва о товаре
     
     func addReview(userId: Int,
                    userReview: String,
@@ -54,7 +54,7 @@ extension Reviews: ReviewsRequestFactory {
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
-    //Удаление отзыва о товаре
+    /// Удаление отзыва о товаре
     
     func removeReview(idReview: Int,
                       removeMessage: String,
@@ -71,7 +71,7 @@ extension Reviews: ReviewsRequestFactory {
 
 extension Reviews {
     
-    //Параметры и путь к запросу получения списка отзывов о товаре.
+    /// Параметры и путь к запросу получения списка отзывов о товаре.
     
     struct GetReview: RequestRouter {
         
@@ -83,9 +83,10 @@ extension Reviews {
         var parameters: Parameters? {
             return ["pageNumber": pageNumber]
         }
+    
     }
     
-    //Параметры и путь к запросу добавления отзыва о товаре.
+    /// Параметры и путь к запросу добавления отзыва о товаре.
     
     struct AddReview: RequestRouter {
         
@@ -100,9 +101,10 @@ extension Reviews {
                 "userId": userId,
                 "userReview": userReview]
         }
+    
     }
     
-    //Параметры и путь к запросу удаления отзыва о товаре.
+    /// Параметры и путь к запросу удаления отзыва о товаре.
     
     struct RemoveReview: RequestRouter {
         
@@ -117,6 +119,7 @@ extension Reviews {
                 "idReview": idReview,
                 "removeMessage": removeMessage]
         }
+    
     }
 
 }

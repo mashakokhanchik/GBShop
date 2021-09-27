@@ -27,6 +27,14 @@
 		E14BBC0726B95BE600AD6A0B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E14BBC0526B95BE600AD6A0B /* LaunchScreen.storyboard */; };
 		E14BBC1226B95BE600AD6A0B /* GBShopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14BBC1126B95BE600AD6A0B /* GBShopTests.swift */; };
 		E14BBC1D26B95BE600AD6A0B /* GBShopUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14BBC1C26B95BE600AD6A0B /* GBShopUITests.swift */; };
+		E14C551C26FF09A600D9A1CF /* AppService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14C551B26FF09A600D9A1CF /* AppService.swift */; };
+		E14C551F26FF0C6C00D9A1CF /* TabBarBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14C551E26FF0C6C00D9A1CF /* TabBarBuilder.swift */; };
+		E14C552126FF1ACE00D9A1CF /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14C552026FF1ACE00D9A1CF /* RegistrationViewController.swift */; };
+		E14C552326FF54F600D9A1CF /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14C552226FF54F600D9A1CF /* ProfileViewController.swift */; };
+		E17725D026FDFC6B0087A25A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17725CF26FDFC6B0087A25A /* LoginViewController.swift */; };
+		E17725D226FE08020087A25A /* ErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17725D126FE08020087A25A /* ErrorViewController.swift */; };
+		E17725D526FE0BE10087A25A /* AppSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17725D426FE0BE10087A25A /* AppSession.swift */; };
+		E17725D726FE0EA40087A25A /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17725D626FE0EA40087A25A /* BaseViewController.swift */; };
 		E18C4B7026C7BF9200DC9ACC /* AbstractErrorParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18C4B6F26C7BF9200DC9ACC /* AbstractErrorParser.swift */; };
 		E18C4B7226C7C04F00DC9ACC /* ErrorParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18C4B7126C7C04F00DC9ACC /* ErrorParser.swift */; };
 		E18C4B7426C7C23200DC9ACC /* ResponseCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18C4B7326C7C23200DC9ACC /* ResponseCodable.swift */; };
@@ -96,6 +104,14 @@
 		E14BBC1826B95BE600AD6A0B /* GBShopUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GBShopUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E14BBC1C26B95BE600AD6A0B /* GBShopUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GBShopUITests.swift; sourceTree = "<group>"; };
 		E14BBC1E26B95BE600AD6A0B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E14C551B26FF09A600D9A1CF /* AppService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppService.swift; sourceTree = "<group>"; };
+		E14C551E26FF0C6C00D9A1CF /* TabBarBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarBuilder.swift; sourceTree = "<group>"; };
+		E14C552026FF1ACE00D9A1CF /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		E14C552226FF54F600D9A1CF /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		E17725CF26FDFC6B0087A25A /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		E17725D126FE08020087A25A /* ErrorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorViewController.swift; sourceTree = "<group>"; };
+		E17725D426FE0BE10087A25A /* AppSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSession.swift; sourceTree = "<group>"; };
+		E17725D626FE0EA40087A25A /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		E18C4B6F26C7BF9200DC9ACC /* AbstractErrorParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractErrorParser.swift; sourceTree = "<group>"; };
 		E18C4B7126C7C04F00DC9ACC /* ErrorParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorParser.swift; sourceTree = "<group>"; };
 		E18C4B7326C7C23200DC9ACC /* ResponseCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseCodable.swift; sourceTree = "<group>"; };
@@ -280,6 +296,16 @@
 			path = GBShopUITests;
 			sourceTree = "<group>";
 		};
+		E14C551D26FF0C2900D9A1CF /* BaseView */ = {
+			isa = PBXGroup;
+			children = (
+				E17725D126FE08020087A25A /* ErrorViewController.swift */,
+				E17725D626FE0EA40087A25A /* BaseViewController.swift */,
+				E14C551E26FF0C6C00D9A1CF /* TabBarBuilder.swift */,
+			);
+			path = BaseView;
+			sourceTree = "<group>";
+		};
 		E16E451D26CD2B81008D0D24 /* GoodsById */ = {
 			isa = PBXGroup;
 			children = (
@@ -287,6 +313,25 @@
 				E1B77D9526D245F8003E0A8C /* GoodsById.swift */,
 			);
 			path = GoodsById;
+			sourceTree = "<group>";
+		};
+		E17725CE26FDFBEB0087A25A /* AuthView */ = {
+			isa = PBXGroup;
+			children = (
+				E17725CF26FDFC6B0087A25A /* LoginViewController.swift */,
+				E14C552026FF1ACE00D9A1CF /* RegistrationViewController.swift */,
+				E14C552226FF54F600D9A1CF /* ProfileViewController.swift */,
+			);
+			path = AuthView;
+			sourceTree = "<group>";
+		};
+		E17725D326FE0BB40087A25A /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				E17725D426FE0BE10087A25A /* AppSession.swift */,
+				E14C551B26FF09A600D9A1CF /* AppService.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 		E18C4B6426C7BE1800DC9ACC /* Resources */ = {
@@ -301,6 +346,7 @@
 		E18C4B6526C7BE1F00DC9ACC /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				E17725D326FE0BB40087A25A /* Service */,
 				E18C4B6E26C7BF3500DC9ACC /* Network */,
 			);
 			path = Core;
@@ -309,6 +355,8 @@
 		E18C4B6626C7BE2100DC9ACC /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				E14C551D26FF0C2900D9A1CF /* BaseView */,
+				E17725CE26FDFBEB0087A25A /* AuthView */,
 				E14BBC0026B95BE500AD6A0B /* Main.storyboard */,
 				E14BBBFE26B95BE500AD6A0B /* ViewController.swift */,
 			);
@@ -702,9 +750,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E14C552126FF1ACE00D9A1CF /* RegistrationViewController.swift in Sources */,
+				E17725D026FDFC6B0087A25A /* LoginViewController.swift in Sources */,
 				E1E9E4D426CBF48200C598E7 /* CatalogDataRequestFactory.swift in Sources */,
 				E1B77D9226D24450003E0A8C /* GoodsByIdResult.swift in Sources */,
 				E18C4B7F26C7CE0E00DC9ACC /* AuthRequestFactory.swift in Sources */,
+				E17725D526FE0BE10087A25A /* AppSession.swift in Sources */,
+				E14C551F26FF0C6C00D9A1CF /* TabBarBuilder.swift in Sources */,
+				E17725D726FE0EA40087A25A /* BaseViewController.swift in Sources */,
 				E18C4B7826C7C9C600DC9ACC /* RequestRouter.swift in Sources */,
 				E18C4B7626C7C58500DC9ACC /* AbstractRequestFactory.swift in Sources */,
 				E1234CAD26E4C4E500AE8FE5 /* Review.swift in Sources */,
@@ -717,11 +770,14 @@
 				E18C4B8326C7D2C300DC9ACC /* RequestFactory.swift in Sources */,
 				E1234CAF26E4C58900AE8FE5 /* ReviewResult.swift in Sources */,
 				E14BBBFF26B95BE500AD6A0B /* ViewController.swift in Sources */,
+				E14C551C26FF09A600D9A1CF /* AppService.swift in Sources */,
 				E18C4B7426C7C23200DC9ACC /* ResponseCodable.swift in Sources */,
 				E14BBBFB26B95BE500AD6A0B /* AppDelegate.swift in Sources */,
 				E144E8A326F0B4C20095CB9C /* Basket.swift in Sources */,
+				E14C552326FF54F600D9A1CF /* ProfileViewController.swift in Sources */,
 				E1234CB226E4C7B900AE8FE5 /* ReviewsRequestFactory.swift in Sources */,
 				E14BBBFD26B95BE500AD6A0B /* SceneDelegate.swift in Sources */,
+				E17725D226FE08020087A25A /* ErrorViewController.swift in Sources */,
 				E1E9E4CC26CBF07900C598E7 /* CatalogDataResult.swift in Sources */,
 				E18C4B7A26C7CC6A00DC9ACC /* AuthResult.swift in Sources */,
 				E18C4B7026C7BF9200DC9ACC /* AbstractErrorParser.swift in Sources */,

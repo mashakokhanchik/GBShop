@@ -34,7 +34,7 @@ class Basket: AbstractRequestFactory {
 
 extension Basket: BasketRequestFactory {
     
-    //Добавление товара в корзину
+    ///Добавление товара в корзину
     
     func addToBasket(idProduct: Int,
                      quantity: Int,
@@ -45,7 +45,7 @@ extension Basket: BasketRequestFactory {
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
-    //Удаление товара из корзины.
+    ///Удаление товара из корзины.
     
     func deleteFromBasket(idProduct: Int,
                           completionHandler: @escaping (AFDataResponse<DeleteFromBasketResult>) -> Void) {
@@ -54,7 +54,7 @@ extension Basket: BasketRequestFactory {
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
-    //Списание денежных средств.
+    ///Списание денежных средств.
     
     func payBasket(userId: Int,
                    userMessage: String,
@@ -64,13 +64,14 @@ extension Basket: BasketRequestFactory {
                                      userMessage: userMessage)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
+
 }
 
 // MARK: - Basket structs
 
 extension Basket {
     
-    //Параметры и путь к запросу добавления товара в корзину.
+    ///Параметры и путь к запросу добавления товара в корзину.
     
     struct AddToBasket: RequestRouter {
         
@@ -88,7 +89,7 @@ extension Basket {
     
     }
     
-    //Параметры и путь к запросу удвления товара из корзины.
+    ///Параметры и путь к запросу удвления товара из корзины.
     
     struct DeleteFromBasket: RequestRouter {
         
@@ -103,7 +104,7 @@ extension Basket {
     
     }
     
-    //Параметры и путь к запросу на списание денежных средств.
+    ///Параметры и путь к запросу на списание денежных средств.
     
     struct PayBasket: RequestRouter {
         
