@@ -8,8 +8,12 @@
 import Foundation
 import Alamofire
 
+///Протокол получения списка товаров.
+
 protocol CatalogDataRequestFactory {
+    
     func getCatalogData(pageNumber: String,
                         idCategory: String,
                         completionHandler: @escaping (AFDataResponse<CatalogDataResult>) -> Void)
-    }
+
+}

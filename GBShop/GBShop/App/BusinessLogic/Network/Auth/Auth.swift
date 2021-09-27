@@ -8,36 +8,32 @@
 import Foundation
 import Alamofire
 
+///Реализация протокола аутентификации личного кабинета.
+
 class Auth: AbstractRequestFactory {
     
     let errorParser: AbstractErrorParser
     let sessionManager: Session
     let queue: DispatchQueue
-    let baseUrl = URL(string: "http://127.0.0.1:8080")!
-
-//Если разбивать на компоненты, не могу получить ответ от сервера, выдает ошибку, ищу как исправить
-    
-    //    lazy var baseUrl: URL? = {
-    //    var components = URLComponents()
-    //    components.scheme = "https"
-    //    components.host = "127.0.0.1:8080"//raw.githubusercontent.com"
-    //    components.path = "registration"//"/GeekBrainsTutorial/online-store-api/master/responses/"
-    //    return components.url
-    //    }()
+    let baseUrl: URL
     
     init(errorParser: AbstractErrorParser,
          sessionManager: Session,
-         queue: DispatchQueue = DispatchQueue.global(qos: .utility)
+         queue: DispatchQueue = DispatchQueue.global(qos: .utility),
+         baseUrl: URL
     ) {
         self.errorParser = errorParser
         self.sessionManager = sessionManager
         self.queue = queue
+        self.baseUrl = baseUrl
     }
 }
 
 //MARK: - Authentication functions
 
 extension Auth: AuthRequestFactory {
+    
+    //Выполнение входа пользователя
     
     func login(userName: String,
                password: String,
@@ -47,7 +43,9 @@ extension Auth: AuthRequestFactory {
                                  password: password)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
-
+    
+    //Регистрация пользоввателя
+    
     func registration(userName: String,
                       password: String,
                       email: String,
@@ -59,6 +57,8 @@ extension Auth: AuthRequestFactory {
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
+    //Изменение личных данных пользователя
+    
     func changeUserData(userName: String,
                         passord: String,
                         email: String,
@@ -69,6 +69,8 @@ extension Auth: AuthRequestFactory {
                                           email: email)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
+    
+    //Реализация выхода пользователя
     
     func logout(userId: String,
                 completionHandler: @escaping (AFDataResponse<LogoutResult>) -> Void) {
@@ -82,7 +84,10 @@ extension Auth: AuthRequestFactory {
 
 extension Auth {
     
+    //Параметры и путь к запросу входа пользователя в личный кабинет.
+    
     struct Login: RequestRouter {
+        
         let baseUrl: URL
         let method: HTTPMethod = .post
         let path: String = "login"
@@ -94,8 +99,11 @@ extension Auth {
                     "password": password]
         }
     }
+    
+    //Параметры и путь к запросу на регистрацию пользователя.
 
     struct Registration: RequestRouter {
+        
         let baseUrl: URL
         let method: HTTPMethod = .post
         let path: String = "registration"
@@ -110,7 +118,10 @@ extension Auth {
         }
     }
     
+    //Параетры и путь к запросу на изменение личных данных пользователя.
+    
     struct ChangeUserData: RequestRouter{
+        
         let baseUrl: URL
         let method: HTTPMethod = .post
         let path: String = "changeUserData"
@@ -125,7 +136,10 @@ extension Auth {
         }
     }
     
+    //Параметры и путь к запросу выхода пользователя из личного кабинета.
+    
     struct Logout: RequestRouter {
+        
         let baseUrl: URL
         let method: HTTPMethod = .post
         let path: String = "logout"
@@ -135,4 +149,5 @@ extension Auth {
             return ["userId": userId]
         }
     }
+
 }

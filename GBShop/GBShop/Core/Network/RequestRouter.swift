@@ -8,6 +8,8 @@
 import Foundation
 import Alamofire
 
+///Реализация запросов к серверу.
+
 enum RequestRouterEncodding {
     
     case url, json
@@ -21,6 +23,7 @@ protocol RequestRouter: URLRequestConvertible {
     var parameters: Parameters? { get }
     var fullUrl: URL { get }
     var encoding: RequestRouterEncodding { get }
+
 }
 
 extension RequestRouter {
@@ -42,4 +45,5 @@ extension RequestRouter {
             return try JSONEncoding.default.encode(urlRequest, with: parameters)
         }
     }
+
 }

@@ -12,4 +12,5 @@ struct CatalogDataResult: Codable {
     let productId: Int
     let productName: String
     let price: Int
+
 }
