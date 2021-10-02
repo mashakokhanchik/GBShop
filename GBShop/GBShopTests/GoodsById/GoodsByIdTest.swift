@@ -20,7 +20,6 @@ class GoodsByIdTest: XCTestCase {
     }
 
     func testGoodsById() throws {
-        
         let baseUrl = try XCTUnwrap(URL(string: "https://failUrl"))
         
         let configuration = URLSessionConfiguration.default
@@ -43,6 +42,5 @@ class GoodsByIdTest: XCTestCase {
         }
         wait(for: [goodsByIdExpectation], timeout: 5.0)
     }
-
 
 }

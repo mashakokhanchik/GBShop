@@ -20,7 +20,6 @@ class CatalogDataTest: XCTestCase {
     }
 
     func testCatalogData() throws {
-        
         let baseUrl = try XCTUnwrap(URL(string: "https://failUrl"))
         
         let configuration = URLSessionConfiguration.default

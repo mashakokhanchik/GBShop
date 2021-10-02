@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-///Протокол работы с отзывами о товаре.
+/// Протокол работы с отзывами о товаре.
 
 protocol ReviewsRequestFactory {
     

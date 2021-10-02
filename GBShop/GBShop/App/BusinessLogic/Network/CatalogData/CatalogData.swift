@@ -32,7 +32,7 @@ class CatalogData: AbstractRequestFactory {
 
 extension CatalogData: CatalogDataRequestFactory {
     
-    //Получение списка товаров
+    ///Получение списка товаров
     
     func getCatalogData(pageNumber: String,
                         idCategory: String,
@@ -47,9 +47,10 @@ extension CatalogData: CatalogDataRequestFactory {
     
 extension CatalogData {
     
-    //Параметры и путь к запросу для получения списка товаров.
+    /// Параметры и путь к запросу для получения списка товаров.
 
     struct CatalogDataRequest: RequestRouter {
+        
         let baseUrl: URL
         let method: HTTPMethod = .post
         let path: String = "catalogData"
@@ -60,6 +61,7 @@ extension CatalogData {
             return ["pageNumber": pageNumber,
                     "idCategory": idCategory]
         }
+    
     }
     
 }

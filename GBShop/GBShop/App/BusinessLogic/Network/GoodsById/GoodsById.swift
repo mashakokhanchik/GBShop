@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-///Реализация протокола получения отдельного товара.
+/// Реализация протокола получения отдельного товара.
 
 class GoodsById: AbstractRequestFactory {
    
@@ -32,17 +32,18 @@ class GoodsById: AbstractRequestFactory {
 
 extension GoodsById: GoodsByIdRequestFactory {
     
-    //Получение отдельного товара
+    /// Получение отдельного товара
     
     func getGoodsById(idProduct: String, completionHandler: @escaping (AFDataResponse<GoodsByIdResult>) -> Void) {
         let requestModel = GoodsByIdRequest(baseUrl: baseUrl, idProduct: idProduct)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
+
 }
 
 extension GoodsById {
     
-    //Параметры и путь к запросу получения отдельного товара.
+    /// Параметры и путь к запросу получения отдельного товара.
     
     struct GoodsByIdRequest: RequestRouter {
 
@@ -54,6 +55,7 @@ extension GoodsById {
         var parameters: Parameters? {
         return ["idProduct": idProduct]
         }
+    
     }
 
 }

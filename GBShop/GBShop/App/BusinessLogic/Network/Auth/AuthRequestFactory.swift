@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-///Протокол реализациии аутентификации личного кабинета.
+/// Протокол реализациии аутентификации личного кабинета.
 
 protocol AuthRequestFactory {
     
@@ -16,17 +16,13 @@ protocol AuthRequestFactory {
                password: String,
                completionHandler: @escaping (AFDataResponse<LoginResult>) -> Void)
     
-    func registration(userName: String,
-                      password: String,
-                      email: String,
+    func registration(userName data: User,
                       completionHandler: @escaping (AFDataResponse<RegistrationResult>) -> Void)
     
-    func changeUserData(userName: String,
-                        passord: String,
-                        email: String,
+    func changeUserData(userName data: User,
                         completionHandler: @escaping (AFDataResponse<ChangeUserDataResult>) -> Void)
     
-    func logout(userId: String,
+    func logout(userId: Int,
                 completionHandler: @escaping (AFDataResponse<LogoutResult>) -> Void)
 
 }

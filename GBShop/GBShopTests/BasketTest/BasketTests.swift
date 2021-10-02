@@ -19,10 +19,9 @@ class BasketTests: XCTestCase {
         try super.tearDownWithError()
     }
     
-//MARK: - Add to basket test
+    // MARK: - Add to basket test
 
     func testAddToBasket() throws {
-        
         let baseUrl = try XCTUnwrap(URL(string: "https://failUrl"))
         
         let configuration = URLSessionConfiguration.default
@@ -46,10 +45,9 @@ class BasketTests: XCTestCase {
         wait(for: [basketExpectation], timeout: 5.0)
     }
     
-//MARK: - Delete from basket test
+    // MARK: - Delete from basket test
     
     func testDeleteFromBasket() throws {
-        
         let baseUrl = try XCTUnwrap(URL(string: "https://failUrl"))
         
         let configuration = URLSessionConfiguration.default
@@ -73,10 +71,9 @@ class BasketTests: XCTestCase {
         wait(for: [basketExpectation], timeout: 5.0)
     }
     
-//MARK: - Pay basket test
+    // MARK: - Pay basket test
     
     func testPayBasket() throws {
-        
         let baseUrl = try XCTUnwrap(URL(string: "https://failUrl"))
         
         let configuration = URLSessionConfiguration.default

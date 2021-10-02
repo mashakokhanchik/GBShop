@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-///Реализация протокола аутентификации личного кабинета.
+/// Реализация протокола аутентификации личного кабинета.
 
 class Auth: AbstractRequestFactory {
     
@@ -27,13 +27,14 @@ class Auth: AbstractRequestFactory {
         self.queue = queue
         self.baseUrl = baseUrl
     }
+
 }
 
-//MARK: - Authentication functions
+// MARK: - Authentication functions
 
 extension Auth: AuthRequestFactory {
     
-    //Выполнение входа пользователя
+    /// Выполнение входа пользователя
     
     func login(userName: String,
                password: String,
@@ -44,35 +45,31 @@ extension Auth: AuthRequestFactory {
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
-    //Регистрация пользоввателя
+    /// Регистрация пользоввателя
     
-    func registration(userName: String,
-                      password: String,
-                      email: String,
+    func registration(userName data: User,
                       completionHandler: @escaping (AFDataResponse<RegistrationResult>) -> Void) {
         let requestModel = Registration(baseUrl: baseUrl,
-                                        login: userName,
-                                        password: password,
-                                        email: email)
+                                        login: data.login ?? "",
+                                        password: data.password ?? "",
+                                        email: data.email ?? "")
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
-    //Изменение личных данных пользователя
+    /// Изменение личных данных пользователя
     
-    func changeUserData(userName: String,
-                        passord: String,
-                        email: String,
+    func changeUserData(userName data: User,
                         completionHandler: @escaping (AFDataResponse<ChangeUserDataResult>) -> Void) {
         let requestModel = ChangeUserData(baseUrl: baseUrl,
-                                          login: userName,
-                                          password: passord,
-                                          email: email)
+                                          login: data.login ?? "",
+                                          password: data.password ?? "",
+                                          email: data.email ?? "")
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
-    //Реализация выхода пользователя
+    /// Реализация выхода пользователя
     
-    func logout(userId: String,
+    func logout(userId: Int,
                 completionHandler: @escaping (AFDataResponse<LogoutResult>) -> Void) {
         let requestModel = Logout(baseUrl: baseUrl, userId: userId)
         self.request(request: requestModel, completionHandler: completionHandler)
@@ -80,11 +77,11 @@ extension Auth: AuthRequestFactory {
     
 }
 
-//MARK: - Authentication structs
+// MARK: - Authentication structs
 
 extension Auth {
     
-    //Параметры и путь к запросу входа пользователя в личный кабинет.
+    /// Параметры и путь к запросу входа пользователя в личный кабинет.
     
     struct Login: RequestRouter {
         
@@ -98,9 +95,10 @@ extension Auth {
             return ["username": login,
                     "password": password]
         }
+    
     }
     
-    //Параметры и путь к запросу на регистрацию пользователя.
+    /// Параметры и путь к запросу на регистрацию пользователя.
 
     struct Registration: RequestRouter {
         
@@ -116,9 +114,10 @@ extension Auth {
                     "password": password,
                     "email": email]
         }
+    
     }
     
-    //Параетры и путь к запросу на изменение личных данных пользователя.
+    /// Параетры и путь к запросу на изменение личных данных пользователя.
     
     struct ChangeUserData: RequestRouter{
         
@@ -134,9 +133,10 @@ extension Auth {
                     "password": password,
                     "email": email]
         }
+    
     }
     
-    //Параметры и путь к запросу выхода пользователя из личного кабинета.
+    /// Параметры и путь к запросу выхода пользователя из личного кабинета.
     
     struct Logout: RequestRouter {
         
@@ -144,10 +144,11 @@ extension Auth {
         let method: HTTPMethod = .post
         let path: String = "logout"
         
-        let userId: String
+        let userId: Int
         var parameters: Parameters? {
             return ["userId": userId]
         }
+    
     }
 
 }
