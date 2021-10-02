@@ -14,14 +14,13 @@
 		E1234CAF26E4C58900AE8FE5 /* ReviewResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1234CAE26E4C58900AE8FE5 /* ReviewResult.swift */; };
 		E1234CB226E4C7B900AE8FE5 /* ReviewsRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1234CB126E4C7B900AE8FE5 /* ReviewsRequestFactory.swift */; };
 		E1234CB426E4CAF400AE8FE5 /* Reviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1234CB326E4CAF400AE8FE5 /* Reviews.swift */; };
-<<<<<<< HEAD
 		E1234F4126F71CF80099AE95 /* ReviewsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1234F4026F71CF80099AE95 /* ReviewsTest.swift */; };
 		E1234F4426F87CD40099AE95 /* BasketTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1234F4326F87CD40099AE95 /* BasketTests.swift */; };
 		E144E89726F0AF890095CB9C /* BasketResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E144E89626F0AF890095CB9C /* BasketResult.swift */; };
 		E144E89D26F0B0AF0095CB9C /* BasketRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E144E89C26F0B0AF0095CB9C /* BasketRequestFactory.swift */; };
 		E144E8A326F0B4C20095CB9C /* Basket.swift in Sources */ = {isa = PBXBuildFile; fileRef = E144E8A226F0B4C20095CB9C /* Basket.swift */; };
-=======
->>>>>>> refs/remotes/origin/develop
+
+
 		E14BBBFB26B95BE500AD6A0B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14BBBFA26B95BE500AD6A0B /* AppDelegate.swift */; };
 		E14BBBFD26B95BE500AD6A0B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14BBBFC26B95BE500AD6A0B /* SceneDelegate.swift */; };
 		E14BBBFF26B95BE500AD6A0B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14BBBFE26B95BE500AD6A0B /* ViewController.swift */; };
@@ -88,14 +87,13 @@
 		E1234CAE26E4C58900AE8FE5 /* ReviewResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewResult.swift; sourceTree = "<group>"; };
 		E1234CB126E4C7B900AE8FE5 /* ReviewsRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsRequestFactory.swift; sourceTree = "<group>"; };
 		E1234CB326E4CAF400AE8FE5 /* Reviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reviews.swift; sourceTree = "<group>"; };
-<<<<<<< HEAD
+
 		E1234F4026F71CF80099AE95 /* ReviewsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsTest.swift; sourceTree = "<group>"; };
 		E1234F4326F87CD40099AE95 /* BasketTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketTests.swift; sourceTree = "<group>"; };
 		E144E89626F0AF890095CB9C /* BasketResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketResult.swift; sourceTree = "<group>"; };
 		E144E89C26F0B0AF0095CB9C /* BasketRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketRequestFactory.swift; sourceTree = "<group>"; };
 		E144E8A226F0B4C20095CB9C /* Basket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Basket.swift; sourceTree = "<group>"; };
-=======
->>>>>>> refs/remotes/origin/develop
+
 		E14BBBF726B95BE500AD6A0B /* GBShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GBShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E14BBBFA26B95BE500AD6A0B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E14BBBFC26B95BE500AD6A0B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -212,7 +210,7 @@
 			path = Reviews;
 			sourceTree = "<group>";
 		};
-<<<<<<< HEAD
+
 		E1234F3F26F71B970099AE95 /* ReviwesTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -246,8 +244,7 @@
 			path = Basket;
 			sourceTree = "<group>";
 		};
-=======
->>>>>>> refs/remotes/origin/develop
+
 		E14BBBEE26B95BE500AD6A0B = {
 			isa = PBXGroup;
 			children = (
@@ -408,10 +405,9 @@
 				E1E9E4CE26CBF0EE00C598E7 /* CatalogData */,
 				E1B77D9026D243FF003E0A8C /* GoodsById */,
 				E1234CAB26E4C48100AE8FE5 /* Reviews */,
-<<<<<<< HEAD
+
 				E144E89526F0AF400095CB9C /* Basket */,
-=======
->>>>>>> refs/remotes/origin/develop
+
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -444,10 +440,9 @@
 				E1E9E4D226CBF42D00C598E7 /* CatalogData */,
 				E16E451D26CD2B81008D0D24 /* GoodsById */,
 				E1234CB026E4C6FA00AE8FE5 /* Reviews */,
-<<<<<<< HEAD
+
 				E144E89426F0AF2C0095CB9C /* Basket */,
-=======
->>>>>>> refs/remotes/origin/develop
+
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -788,14 +783,12 @@
 				E14C551C26FF09A600D9A1CF /* AppService.swift in Sources */,
 				E18C4B7426C7C23200DC9ACC /* ResponseCodable.swift in Sources */,
 				E14BBBFB26B95BE500AD6A0B /* AppDelegate.swift in Sources */,
-<<<<<<< HEAD
+
 				E144E8A326F0B4C20095CB9C /* Basket.swift in Sources */,
-<<<<<<< HEAD
-=======
->>>>>>> refs/remotes/origin/develop
-=======
+
+
 				E14C552326FF54F600D9A1CF /* ProfileViewController.swift in Sources */,
->>>>>>> feature/hw7
+
 				E1234CB226E4C7B900AE8FE5 /* ReviewsRequestFactory.swift in Sources */,
 				E14BBBFD26B95BE500AD6A0B /* SceneDelegate.swift in Sources */,
 				E17725D226FE08020087A25A /* ErrorViewController.swift in Sources */,
