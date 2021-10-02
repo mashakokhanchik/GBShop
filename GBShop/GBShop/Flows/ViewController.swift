@@ -22,9 +22,12 @@ class ViewController: UIViewController {
         getReview()//Получение списка отзывов о товаре
         addReview()//Добавление отзыва о товаре
         removeReview()//Удаление отзыва о товаре
+<<<<<<< HEAD
         addToBasket()//Добавление товара в корзину
         deleteFromBasket()//Удаление товара из корзины
         payBasket()//Списание денежных средств
+=======
+>>>>>>> refs/remotes/origin/develop
     }
 
 //MARK: - Authentication functions
@@ -142,6 +145,7 @@ class ViewController: UIViewController {
             }
         }
     }
+<<<<<<< HEAD
     
 // MARK: - Basket functions
     
@@ -180,6 +184,8 @@ class ViewController: UIViewController {
             }
         }
     }
+=======
+>>>>>>> refs/remotes/origin/develop
 
 }
 

@@ -66,6 +66,7 @@ class RequestFactory {
                        sessionManager: commonSession,
                        queue: sessionQueue,
                        baseUrl: baseUrl!)
+<<<<<<< HEAD
     }
     
     func makeBasketFactory() -> BasketRequestFactory {
@@ -74,6 +75,8 @@ class RequestFactory {
                       sessionManager: commonSession,
                       queue: sessionQueue,
                       baseUrl: baseUrl!)
+=======
+>>>>>>> refs/remotes/origin/develop
     }
     
 }
