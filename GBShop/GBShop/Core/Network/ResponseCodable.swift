@@ -8,6 +8,8 @@
 import Foundation
 import Alamofire
 
+///Класс для обработки полученного ответа для Alamofire.
+
 class CustomDecodableSerializer<T: Decodable>: DataResponseSerializerProtocol {
     
     private let errorParser: AbstractErrorParser
@@ -37,6 +39,7 @@ class CustomDecodableSerializer<T: Decodable>: DataResponseSerializerProtocol {
             throw customError
         }
     }
+    
 }
 
 extension DataRequest {
@@ -50,4 +53,5 @@ extension DataRequest {
                         responseSerializer: responseSerializer,
                         completionHandler: completionHandler)
     }
+    
 }

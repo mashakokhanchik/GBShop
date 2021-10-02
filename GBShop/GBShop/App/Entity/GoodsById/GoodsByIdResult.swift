@@ -8,8 +8,10 @@
 import Foundation
 
 struct GoodsByIdResult: Codable {
+    
     let result: Int
     let name: String
     let price: Int
     let description: String
+
 }

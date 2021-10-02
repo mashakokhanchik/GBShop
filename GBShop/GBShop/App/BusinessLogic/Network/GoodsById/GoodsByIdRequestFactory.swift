@@ -8,6 +8,10 @@
 import Foundation
 import Alamofire
 
+///Протокол получения отдельного товара.
+
 protocol GoodsByIdRequestFactory {
+    
     func getGoodsById(idProduct: String, completionHandler: @escaping(AFDataResponse<GoodsByIdResult>) -> Void)
+
 }

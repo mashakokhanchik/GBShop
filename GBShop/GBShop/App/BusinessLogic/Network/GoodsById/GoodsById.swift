@@ -8,23 +8,31 @@
 import Foundation
 import Alamofire
 
+///Реализация протокола получения отдельного товара.
+
 class GoodsById: AbstractRequestFactory {
+   
     let errorParser: AbstractErrorParser
     let sessionManager: Session
     let queue: DispatchQueue
-    let baseUrl = URL(string: "http://127.0.0.1:8080")!
+    let baseUrl: URL
     
     init(errorParser: AbstractErrorParser,
          sessionManager: Session,
-         queue: DispatchQueue = DispatchQueue.global(qos: .utility)
+         queue: DispatchQueue = DispatchQueue.global(qos: .utility),
+         baseUrl: URL
     ) {
         self.errorParser = errorParser
         self.sessionManager = sessionManager
         self.queue = queue
+        self.baseUrl = baseUrl
     }
+
 }
 
 extension GoodsById: GoodsByIdRequestFactory {
+    
+    //Получение отдельного товара
     
     func getGoodsById(idProduct: String, completionHandler: @escaping (AFDataResponse<GoodsByIdResult>) -> Void) {
         let requestModel = GoodsByIdRequest(baseUrl: baseUrl, idProduct: idProduct)
@@ -33,6 +41,8 @@ extension GoodsById: GoodsByIdRequestFactory {
 }
 
 extension GoodsById {
+    
+    //Параметры и путь к запросу получения отдельного товара.
     
     struct GoodsByIdRequest: RequestRouter {
 
@@ -45,4 +55,5 @@ extension GoodsById {
         return ["idProduct": idProduct]
         }
     }
+
 }

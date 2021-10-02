@@ -7,6 +7,8 @@
 
 import Foundation
 
+///Реализация протокола обработки ошибок.
+
 class ErrorParser: AbstractErrorParser {
     
     func parse(_ result: Error) -> Error {
