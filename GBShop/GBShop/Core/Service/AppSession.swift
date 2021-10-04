@@ -13,7 +13,9 @@ class AppSession {
     
     static var shared = AppSession()
     private(set) var userInfo: User?
-    var currentUserId: Int? { return userInfo?.id}
+    private(set) var productInfo: GoodsByIdResult?
+    var currentUserId: Int? { return userInfo?.id }
+    var currentProductId: Int? { return productInfo?.productId }
     
     // MARK: - Methods
     
@@ -23,6 +25,10 @@ class AppSession {
 
     func killUserInfo() {
         self.userInfo = nil
+    }
+    
+    func setProductInfo(_ info: GoodsByIdResult) {
+        self.productInfo = info
     }
 
 }

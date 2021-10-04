@@ -34,10 +34,15 @@ class AppService {
     // MARK: - Private methods
     
     private func configure() {
+        let catalog = getScreenPage(identifier: "catalogScreen")
         let prifile = getScreenPage(identifier: "profileScreen")
         
         let tabBarBuilder = TabBarBuilder()
         
+        tabBarBuilder.addNavigationController(viewController: catalog,
+                                              title: "Каталог",
+                                              image: "folder",
+                                              selectedImage: "folder.fill")
         tabBarBuilder.addNavigationController(viewController: prifile,
                                               title: "Профиль",
                                               image: "person",

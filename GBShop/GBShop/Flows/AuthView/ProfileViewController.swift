@@ -17,6 +17,9 @@ class ProfileViewController: BaseViewController {
     @IBOutlet weak var repeatNewPasswordTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     
+    @IBOutlet var userDataProfileLabels: [UILabel]!
+    @IBOutlet var userDataPrifileTextField: [UITextField]!
+    
     // MARK: - Properties
     
     var userFactory = RequestFactory().makeAuthRequestFactory()
@@ -25,12 +28,66 @@ class ProfileViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        showProfileInterface()
 
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(viewClicked))
         view.addGestureRecognizer(tapGestureRecognizer)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
+        if !isNeedLogin {
+            loadProfile()
+        } else {
+            loginButtonPressed(self)
+        }
+    }
+    
     // MARK: - Private methods
+    
+    private func loadProfile() {
+        if let userId = userId {
+            userFactory.getUserData(userId: userId) { [weak self] response in
+                guard let self = self else { return }
+                switch response.result {
+                case let .success(userData):
+                    DispatchQueue.main.async {
+                        self.willDisappear(bool: false)
+                        self.userNameTextField.text = userData.login
+                        self.oldPasswordTextField.text = userData.password
+                        self.emailTextField.text = userData.email
+                    }
+                case .failure(_):
+                    DispatchQueue.main.async {
+                        self.willDisappear(bool: true)
+                        self.showErrorMessage(message: "Невозможно загрузить данные")
+                    }
+                }
+            }
+        } else {
+            willDisappear(bool: true)
+            showErrorMessage(message: "Невозможно загрузит данные")
+        }
+    }
+    
+    private func showProfileInterface(hide: Bool = true) {
+        if !isNeedLogin {
+            willDisappear(bool: false)
+        } else {
+            willDisappear(bool: true)
+        }
+    }
+    
+    private func toggleProfileInterface(hide: Bool = true) {
+        for usedDataLabels in userDataProfileLabels {
+            usedDataLabels.isHidden = hide
+        }
+        for userDataTextField in userDataPrifileTextField {
+            userDataTextField.isHidden = hide
+        }
+    }
     
     // MARK: - Methods
     
@@ -41,6 +98,11 @@ class ProfileViewController: BaseViewController {
     // MARK: - Actions
     
     @IBAction func loginButtonPressed(_ sender: Any) {
+        if !isNeedLogin {
+            logoutButtonPressed(self)
+        } else {
+            loginButtonPressed(self)
+        }
     }
     
     @IBAction func saveButtonPressed(_ sender: Any) {
@@ -139,4 +201,16 @@ class ProfileViewController: BaseViewController {
         present(alertViewController, animated: true)
     }
 
+}
+
+extension ProfileViewController: NeedLoginDelegate {
+    
+    func willReloadData() {
+        loadProfile()
+    }
+    
+    func willDisappear(bool: Bool) {
+        toggleProfileInterface()
+    }
+    
 }

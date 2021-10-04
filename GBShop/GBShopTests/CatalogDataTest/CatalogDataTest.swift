@@ -27,7 +27,7 @@ class CatalogDataTest: XCTestCase {
         configuration.headers = .default
         let session = Session(configuration: configuration)
         
-        let catalogData = CatalogData(errorParser: ErrorParser(),
+        let catalogData = GoodsData(errorParser: ErrorParser(),
                                       sessionManager: session,
                                       baseUrl: baseUrl)
         

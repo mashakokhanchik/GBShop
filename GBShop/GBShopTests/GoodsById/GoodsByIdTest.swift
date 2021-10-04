@@ -27,7 +27,7 @@ class GoodsByIdTest: XCTestCase {
         configuration.headers = .default
         let session = Session(configuration: configuration)
         
-        let goodsById = GoodsById(errorParser: ErrorParser(),
+        let goodsById = GoodsData(errorParser: ErrorParser(),
                                   sessionManager: session,
                                   baseUrl: baseUrl)
         

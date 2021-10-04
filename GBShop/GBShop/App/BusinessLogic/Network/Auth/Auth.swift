@@ -56,6 +56,14 @@ extension Auth: AuthRequestFactory {
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
+    /// Получение данных пользователя
+    
+    func getUserData(userId: Int,
+                     completionHandler: @escaping (AFDataResponse<GetUserDataResult>) -> Void) {
+        let requestModel = GetUserData(baseUrl: baseUrl, userId: userId)
+        self.request(request: requestModel, completionHandler: completionHandler)
+    }
+    
     /// Изменение личных данных пользователя
     
     func changeUserData(userName data: User,
@@ -115,6 +123,20 @@ extension Auth {
                     "email": email]
         }
     
+    }
+    
+    /// Параметры и путь к запросу на получение данных пользователя.
+    
+    struct GetUserData: RequestRouter {
+        
+        let baseUrl: URL
+        let method: HTTPMethod = .post
+        let path: String = "getUserData"
+        
+        let userId: Int
+        var parameters: Parameters? {
+            return ["userId": userId]
+        }
     }
     
     /// Параетры и путь к запросу на изменение личных данных пользователя.
