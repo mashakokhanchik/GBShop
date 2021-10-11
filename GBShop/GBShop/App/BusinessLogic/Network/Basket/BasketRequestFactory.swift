@@ -13,6 +13,7 @@ import Alamofire
 protocol BasketRequestFactory {
     
     func addToBasket(idProduct: Int,
+                     userId: Int,
                      quantity: Int,
                      completionHandler: @escaping(AFDataResponse<AddToBasketResult>) -> Void)
     

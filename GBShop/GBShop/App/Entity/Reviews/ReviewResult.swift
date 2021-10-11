@@ -7,23 +7,23 @@
 
 import Foundation
 
-struct GetReviewResult: Codable {
-    
-    let result: Int
-    let reviews: Review
-
-}
+typealias GetReviewListResult = [Review]
 
 struct AddReviewResult: Codable {
     
     let result: Int
-    let userReview: String
+    let userMessage: String
+
+}
+
+struct ApproveReviewResult: Codable {
+    
+    let result: Int
 
 }
 
 struct RemoveReviewResult: Codable {
     
     let result: Int
-    let removeMessage: String
 
 }
