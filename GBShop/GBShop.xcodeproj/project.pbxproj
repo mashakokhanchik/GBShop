@@ -49,6 +49,8 @@
 		E18C4B7F26C7CE0E00DC9ACC /* AuthRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18C4B7E26C7CE0E00DC9ACC /* AuthRequestFactory.swift */; };
 		E18C4B8126C7CEBB00DC9ACC /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18C4B8026C7CEBB00DC9ACC /* Auth.swift */; };
 		E18C4B8326C7D2C300DC9ACC /* RequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E18C4B8226C7D2C300DC9ACC /* RequestFactory.swift */; };
+		E1B4874127141AD100A09868 /* AddReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B4874027141AD100A09868 /* AddReviewViewController.swift */; };
+		E1B4874327141B2900A09868 /* ProductReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B4874227141B2900A09868 /* ProductReviewTableViewCell.swift */; };
 		E1B77D9226D24450003E0A8C /* GoodsByIdResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B77D9126D24450003E0A8C /* GoodsByIdResult.swift */; };
 		E1B77D9826D26345003E0A8C /* AuthTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B77D9726D26345003E0A8C /* AuthTest.swift */; };
 		E1B77D9B26D26D7D003E0A8C /* CatalogDataTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1B77D9A26D26D7D003E0A8C /* CatalogDataTest.swift */; };
@@ -128,6 +130,8 @@
 		E18C4B7E26C7CE0E00DC9ACC /* AuthRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRequestFactory.swift; sourceTree = "<group>"; };
 		E18C4B8026C7CEBB00DC9ACC /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 		E18C4B8226C7D2C300DC9ACC /* RequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestFactory.swift; sourceTree = "<group>"; };
+		E1B4874027141AD100A09868 /* AddReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewViewController.swift; sourceTree = "<group>"; };
+		E1B4874227141B2900A09868 /* ProductReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductReviewTableViewCell.swift; sourceTree = "<group>"; };
 		E1B77D9126D24450003E0A8C /* GoodsByIdResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsByIdResult.swift; sourceTree = "<group>"; };
 		E1B77D9726D26345003E0A8C /* AuthTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTest.swift; sourceTree = "<group>"; };
 		E1B77D9A26D26D7D003E0A8C /* CatalogDataTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogDataTest.swift; sourceTree = "<group>"; };
@@ -364,6 +368,7 @@
 				E14C551D26FF0C2900D9A1CF /* BaseView */,
 				E17725CE26FDFBEB0087A25A /* AuthView */,
 				E10F68BE2709D6F400BD1178 /* CatalogView */,
+				E1B4873F27141A9800A09868 /* Reviews */,
 				E14BBC0026B95BE500AD6A0B /* Main.storyboard */,
 				E14BBBFE26B95BE500AD6A0B /* ViewController.swift */,
 			);
@@ -440,6 +445,15 @@
 				E144E89426F0AF2C0095CB9C /* Basket */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		E1B4873F27141A9800A09868 /* Reviews */ = {
+			isa = PBXGroup;
+			children = (
+				E1B4874027141AD100A09868 /* AddReviewViewController.swift */,
+				E1B4874227141B2900A09868 /* ProductReviewTableViewCell.swift */,
+			);
+			path = Reviews;
 			sourceTree = "<group>";
 		};
 		E1B77D9926D26BDC003E0A8C /* CatalogDataTest */ = {
@@ -777,8 +791,10 @@
 				E14C552326FF54F600D9A1CF /* ProfileViewController.swift in Sources */,
 				E1234CB226E4C7B900AE8FE5 /* ReviewsRequestFactory.swift in Sources */,
 				E14BBBFD26B95BE500AD6A0B /* SceneDelegate.swift in Sources */,
+				E1B4874327141B2900A09868 /* ProductReviewTableViewCell.swift in Sources */,
 				E17725D226FE08020087A25A /* ErrorViewController.swift in Sources */,
 				E1E9E4CC26CBF07900C598E7 /* CatalogDataResult.swift in Sources */,
+				E1B4874127141AD100A09868 /* AddReviewViewController.swift in Sources */,
 				E18C4B7A26C7CC6A00DC9ACC /* AuthResult.swift in Sources */,
 				E18C4B7026C7BF9200DC9ACC /* AbstractErrorParser.swift in Sources */,
 				E18C4B7C26C7CCBA00DC9ACC /* User.swift in Sources */,

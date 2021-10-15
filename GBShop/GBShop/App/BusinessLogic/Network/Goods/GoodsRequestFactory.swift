@@ -14,6 +14,6 @@ protocol GoodsRequestFactory {
     
     func getCatalogData(completionHandler: @escaping (AFDataResponse<CatalogDataResult>) -> Void)
     
-    func getGoodsById(idProduct: String, completionHandler: @escaping(AFDataResponse<GoodsByIdResult>) -> Void)
+    func getGoodsById(idProduct: Int, completionHandler: @escaping(AFDataResponse<GoodsByIdResult>) -> Void)
 
 }

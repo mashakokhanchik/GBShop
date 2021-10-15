@@ -12,15 +12,17 @@ import Alamofire
 
 protocol ReviewsRequestFactory {
     
-    func getReview(pageNumber: String,
-                   completionHandler: @escaping(AFDataResponse<GetReviewResult>) -> Void)
+    func getReview(productId: Int,
+                   completionHandler: @escaping(AFDataResponse<GetReviewListResult>) -> Void)
     
-    func addReview(userId: Int,
-                   userReview: String,
+    func addReview(productId: Int,
+                   review: Review,
                    completionHandler: @escaping(AFDataResponse<AddReviewResult>) -> Void)
     
+    func setReviewApprove(idReview: Int,
+                          completionHandler: @escaping(AFDataResponse<ApproveReviewResult>) -> Void)
+    
     func removeReview(idReview: Int,
-                      removeMessage: String,
                       completionHandler: @escaping(AFDataResponse<RemoveReviewResult>) -> Void)
 
 }

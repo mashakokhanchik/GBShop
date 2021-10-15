@@ -36,32 +36,41 @@ extension Reviews: ReviewsRequestFactory {
     
     /// Получение списка отзывов о товаре
     
-    func getReview(pageNumber: String,
-                   completionHandler: @escaping (AFDataResponse<GetReviewResult>) -> Void) {
-        let requestModel = GetReview(baseUrl: baseUrl,
-                                     pageNumber: pageNumber)
+    func getReview(productId: Int,
+                   completionHandler: @escaping (AFDataResponse<GetReviewListResult>) -> Void) {
+        let requestModel = GetListReview(baseUrl: baseUrl,
+                                     productId: productId)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
     /// Добавление отзыва о товаре
     
-    func addReview(userId: Int,
-                   userReview: String,
+    func addReview(productId: Int,
+                   review: Review,
                    completionHandler: @escaping (AFDataResponse<AddReviewResult>) -> Void) {
         let requestModel = AddReview(baseUrl: baseUrl,
-                                     userId: userId,
-                                     userReview: userReview)
+                                     productId: productId,
+                                     idReview: review.idReview,
+                                     login: review.login,
+                                     email: review.email,
+                                     title: review.title,
+                                     textReview: review.textReview)
+        self.request(request: requestModel, completionHandler: completionHandler)
+    }
+    
+    func setReviewApprove(idReview: Int,
+                          completionHandler: @escaping (AFDataResponse<ApproveReviewResult>) -> Void) {
+        let requestModel = ApproveReview(baseUrl: baseUrl,
+                                         idReview: idReview)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
     /// Удаление отзыва о товаре
     
     func removeReview(idReview: Int,
-                      removeMessage: String,
                       completionHandler: @escaping (AFDataResponse<RemoveReviewResult>) -> Void) {
         let requestModel = RemoveReview(baseUrl: baseUrl,
-                                        idReview: idReview,
-                                        removeMessage: removeMessage)
+                                        idReview: idReview)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
@@ -73,15 +82,15 @@ extension Reviews {
     
     /// Параметры и путь к запросу получения списка отзывов о товаре.
     
-    struct GetReview: RequestRouter {
+    struct GetListReview: RequestRouter {
         
         let baseUrl: URL
         let method: HTTPMethod = .post
-        let path: String = "getReview"
+        let path: String = "getListReview"
         
-        let pageNumber: String
+        let productId: Int
         var parameters: Parameters? {
-            return ["pageNumber": pageNumber]
+            return ["pageNumber": productId]
         }
     
     }
@@ -94,14 +103,35 @@ extension Reviews {
         let method: HTTPMethod = .post
         let path: String = "addReview"
         
-        let userId: Int
-        let userReview: String
+        let productId: Int
+        let idReview: Int?
+        let login: String
+        let email: String
+        let title: String
+        let textReview: String
         var parameters: Parameters? {
             return [
-                "userId": userId,
-                "userReview": userReview]
+                "productId": productId,
+                "idReview": idReview ?? 0,
+                "login": login,
+                "email": email,
+                "title": title,
+                "textReview": textReview]
         }
     
+    }
+    
+    struct ApproveReview: RequestRouter {
+        
+        let baseUrl: URL
+        let method: HTTPMethod = .post
+        let path: String = "approveReview"
+        
+        let idReview: Int
+        var parameters: Parameters? {
+            return [
+                "idReview": idReview]
+        }
     }
     
     /// Параметры и путь к запросу удаления отзыва о товаре.
@@ -113,11 +143,9 @@ extension Reviews {
         let path: String = "removeReview"
         
         let idReview: Int
-        let removeMessage: String
         var parameters: Parameters? {
             return [
-                "idReview": idReview,
-                "removeMessage": removeMessage]
+                "idReview": idReview]
         }
     
     }

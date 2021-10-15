@@ -46,11 +46,6 @@ class RequestFactory {
                  baseUrl: self.baseUrl!)
         }
         return container.resolve(Auth.self)!
-//        let errorParser = makeErrorParser()
-//        return Auth(errorParser: errorParser,
-//                    sessionManager: commonSession,
-//                    queue: sessionQueue,
-//                    baseUrl: baseUrl!)
     }
     
     func makeGoodsDataRequestFactory() -> GoodsRequestFactory {
@@ -62,20 +57,18 @@ class RequestFactory {
                  baseUrl: self.baseUrl!)
         }
         return container.resolve(GoodsData.self)!
-//        let errorParser = makeErrorParser()
-//        return GoodsData(errorParser: errorParser,
-//                           sessionManager: commonSession,
-//                           queue: sessionQueue,
-//                           baseUrl: baseUrl!)
     }
     
     
-    func makeReviewsFactory() -> ReviewsRequestFactory {
-        let errorParser = makeErrorParser()
-        return Reviews(errorParser: errorParser,
-                       sessionManager: commonSession,
-                       queue: sessionQueue,
-                       baseUrl: baseUrl!)
+    func makeReviewsRequestFactory() -> ReviewsRequestFactory {
+        let container = Container()
+        container.register(AbstractErrorParser.self) { _ in ErrorParser() }
+        container.register(Reviews.self) { resolver in
+            Reviews(errorParser: resolver.resolve(AbstractErrorParser.self)!,
+                    sessionManager: self.commonSession,
+                    baseUrl: self.baseUrl!)
+        }
+        return container.resolve(Reviews.self)!
     }
     
     func makeBasketFactory() -> BasketRequestFactory {

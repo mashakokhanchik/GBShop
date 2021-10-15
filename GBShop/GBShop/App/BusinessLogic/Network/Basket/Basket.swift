@@ -37,10 +37,12 @@ extension Basket: BasketRequestFactory {
     ///Добавление товара в корзину
     
     func addToBasket(idProduct: Int,
+                     userId: Int,
                      quantity: Int,
                      completionHandler: @escaping(AFDataResponse<AddToBasketResult>) -> Void) {
         let requestModel = AddToBasket(baseUrl: baseUrl,
                                        idProduct: idProduct,
+                                       userId: userId,
                                        quantity: quantity)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
@@ -80,10 +82,12 @@ extension Basket {
         let path: String = "addToBasket"
         
         let idProduct: Int
+        let userId: Int
         let quantity: Int
         var parameters: Parameters? {
             return [
                 "idProduct": idProduct,
+                "userId": userId,
                 "quantity": quantity]
         }
     

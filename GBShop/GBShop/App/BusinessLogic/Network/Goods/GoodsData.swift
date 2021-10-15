@@ -31,7 +31,7 @@ class GoodsData: AbstractRequestFactory {
 }
 
 extension GoodsData: GoodsRequestFactory {
-    
+
     ///Получение списка товаров
     
     func getCatalogData(completionHandler: @escaping (AFDataResponse<CatalogDataResult>) -> Void) {
@@ -41,7 +41,7 @@ extension GoodsData: GoodsRequestFactory {
     
     /// Получение отдельного товара
     
-    func getGoodsById(idProduct: String, completionHandler: @escaping (AFDataResponse<GoodsByIdResult>) -> Void) {
+    func getGoodsById(idProduct: Int, completionHandler: @escaping (AFDataResponse<GoodsByIdResult>) -> Void) {
         let requestModel = GoodsByIdRequest(baseUrl: baseUrl, idProduct: idProduct)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
@@ -70,7 +70,7 @@ extension GoodsData {
         let method: HTTPMethod = .post
         let path: String = "getGoodById"
     
-        let idProduct: String
+        let idProduct: Int
         var parameters: Parameters? {
         return ["idProduct": idProduct]
         }
