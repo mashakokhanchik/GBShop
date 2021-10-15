@@ -35,22 +35,27 @@ class ResponseCodableTest: XCTestCase {
 
     let expectation = XCTestExpectation(description: "Download https://failUrl")
     var errorParser = ErrorParserStub()
+
+    override func setUp() {
+        super.setUp()
+        errorParser = ErrorParserStub()
+    }
     
-    override func setUpWithError() throws {
-        try super.setUpWithError()
+    override func tearDown() {
+        super.tearDown()
+        errorParser = ErrorParserStub()
     }
-
-    override func tearDownWithError() throws {
-        try super.tearDownWithError()
-    }
-
+    
     func testExample() throws {
+        let errorParser = ErrorParserStub()
         AF
+            /// Необходимо поменять https
             .request("https://failUrl")
             .responseCodable(errorParser: errorParser) { [weak self] (response: DataResponse<PostStub, AFError>) in
                 switch response.result {
                 case .success(_): break
-                case .failure: XCTFail()
+                case .failure(let error):
+                    XCTFail(error.localizedDescription)
                 }
                 self!.expectation.fulfill()
             }

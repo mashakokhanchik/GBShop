@@ -21,6 +21,17 @@ struct RegistrationResult: Codable {
 
 }
 
+struct GetUserDataResult: Codable {
+    
+    let result: Int
+    let userId: Int
+    let login: String
+    let lastname: String
+    let email: String
+    let password: String
+
+}
+
 struct ChangeUserDataResult: Codable {
     
     let result: Int

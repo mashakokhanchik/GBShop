@@ -7,6 +7,7 @@
 
 import Foundation
 import Alamofire
+import Swinject
 
 class RequestFactory {
     
@@ -37,28 +38,37 @@ class RequestFactory {
     let sessionQueue = DispatchQueue.global(qos: .utility)
     
     func makeAuthRequestFactory() -> AuthRequestFactory {
-        let errorParser = makeErrorParser()
-        return Auth(errorParser: errorParser,
-                    sessionManager: commonSession,
-                    queue: sessionQueue,
-                    baseUrl: baseUrl!)
+        let container = Container()
+        container.register(AbstractErrorParser.self) { _ in ErrorParser() }
+        container.register(Auth.self) { resolver in
+            Auth(errorParser: resolver.resolve(AbstractErrorParser.self)!,
+                 sessionManager: self.commonSession,
+                 baseUrl: self.baseUrl!)
+        }
+        return container.resolve(Auth.self)!
+//        let errorParser = makeErrorParser()
+//        return Auth(errorParser: errorParser,
+//                    sessionManager: commonSession,
+//                    queue: sessionQueue,
+//                    baseUrl: baseUrl!)
     }
     
-    func makeCatalogDataRequestFactory() -> CatalogDataRequestFactory {
-        let errorParser = makeErrorParser()
-        return CatalogData(errorParser: errorParser,
-                           sessionManager: commonSession,
-                           queue: sessionQueue,
-                           baseUrl: baseUrl!)
+    func makeGoodsDataRequestFactory() -> GoodsRequestFactory {
+        let container = Container()
+        container.register(AbstractErrorParser.self) { _ in ErrorParser() }
+        container.register(GoodsData.self) { resolver in
+            GoodsData(errorParser: resolver.resolve(AbstractErrorParser.self)!,
+                 sessionManager: self.commonSession,
+                 baseUrl: self.baseUrl!)
+        }
+        return container.resolve(GoodsData.self)!
+//        let errorParser = makeErrorParser()
+//        return GoodsData(errorParser: errorParser,
+//                           sessionManager: commonSession,
+//                           queue: sessionQueue,
+//                           baseUrl: baseUrl!)
     }
     
-    func makeGoodsByIdFactory() -> GoodsByIdRequestFactory {
-        let errorParser = makeErrorParser()
-        return GoodsById(errorParser: errorParser,
-                         sessionManager:commonSession,
-                         queue: sessionQueue,
-                         baseUrl: baseUrl!)
-    }
     
     func makeReviewsFactory() -> ReviewsRequestFactory {
         let errorParser = makeErrorParser()
@@ -66,7 +76,6 @@ class RequestFactory {
                        sessionManager: commonSession,
                        queue: sessionQueue,
                        baseUrl: baseUrl!)
-<<<<<<< HEAD
     }
     
     func makeBasketFactory() -> BasketRequestFactory {
@@ -75,8 +84,6 @@ class RequestFactory {
                       sessionManager: commonSession,
                       queue: sessionQueue,
                       baseUrl: baseUrl!)
-=======
->>>>>>> refs/remotes/origin/develop
     }
     
 }

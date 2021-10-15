@@ -19,6 +19,9 @@ protocol AuthRequestFactory {
     func registration(userName data: User,
                       completionHandler: @escaping (AFDataResponse<RegistrationResult>) -> Void)
     
+    func getUserData(userId: Int,
+                     completionHandler: @escaping (AFDataResponse<GetUserDataResult>) -> Void)
+    
     func changeUserData(userName data: User,
                         completionHandler: @escaping (AFDataResponse<ChangeUserDataResult>) -> Void)
     
