@@ -72,11 +72,14 @@ class RequestFactory {
     }
     
     func makeBasketFactory() -> BasketRequestFactory {
-        let errorParser = makeErrorParser()
-        return Basket(errorParser: errorParser,
-                      sessionManager: commonSession,
-                      queue: sessionQueue,
-                      baseUrl: baseUrl!)
+        let container = Container()
+        container.register(AbstractErrorParser.self) { _ in ErrorParser() }
+        container.register(Basket.self) { resolver in
+            Basket(errorParser: resolver.resolve(AbstractErrorParser.self)!,
+                   sessionManager: self.commonSession,
+                   baseUrl: self.baseUrl!)
+        }
+        return container.resolve(Basket.self)!
     }
     
 }

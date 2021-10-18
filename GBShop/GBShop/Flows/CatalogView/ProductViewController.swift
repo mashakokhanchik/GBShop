@@ -72,7 +72,7 @@ class ProductViewController: BaseViewController {
     func productPageInitWith(product: GoodsByIdResult) {
         self.product = product
         productNameLabel.text = product.productName
-        //productPriceLabel.text = String(product.price) + " ₽"
+        //productPriceLabel.text = String(product.price) + " руб."
         productDescriptionLabel.text = product.description
         
         let imageSource = product.productImage
@@ -136,7 +136,7 @@ class ProductViewController: BaseViewController {
         }
         if let productId = productId,
            let userId = appService.session.userInfo?.id {
-            basketFabric.addToBasket(idProduct: productId,
+            basketFabric.addToBasket(productId: productId,
                                      userId: userId,
                                      quantity: 1)
             { [ weak self ] response in
@@ -178,7 +178,7 @@ extension ProductViewController: NeedLoginDelegate {
         if isAddToBasketClicked {
             if let productId = productId,
                let userId = appService.session.userInfo?.id {
-                basketFabric.addToBasket(idProduct: productId,
+                basketFabric.addToBasket(productId: productId,
                                          userId: userId,
                                          quantity: 1)
                 { [ weak self ] response in

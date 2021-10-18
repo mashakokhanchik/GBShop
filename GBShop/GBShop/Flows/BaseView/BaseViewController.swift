@@ -32,7 +32,7 @@ class BaseViewController: UIViewController {
     var isNeedLogin: Bool { return userId == nil}
     var userNameLogin: String?
     var passwordLogin: String?
-    var productId: Int? {return AppService.shared.session.productInfo?.productId}
+    var productId: Int? { return AppService.shared.session.productInfo?.productId }
     
     weak var needLoginDelegate: NeedLoginDelegate?
     weak var fillLoginScreenDelegate: FillLoginScreenDelegate?

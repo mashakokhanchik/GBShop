@@ -36,6 +36,7 @@ class AppService {
     private func configure() {
         let catalog = getScreenPage(identifier: "catalogScreen")
         let prifile = getScreenPage(identifier: "profileScreen")
+        let basket = getScreenPage(identifier: "basketScreen")
         
         let tabBarBuilder = TabBarBuilder()
         
@@ -47,6 +48,10 @@ class AppService {
                                               title: "Профиль",
                                               image: "person",
                                               selectedImage: "person.fill")
+        tabBarBuilder.addNavigationController(viewController: basket,
+                                              title: "Корзина",
+                                              image: "cart",
+                                              selectedImage: "cart.fill")
         
         let tabBar = tabBarBuilder.build()
         self.rootViewController = tabBar

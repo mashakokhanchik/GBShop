@@ -36,7 +36,7 @@ class ProductTableViewCell: UITableViewCell {
         }
         productNameLabel.text = product.productName
         productDescriptionLebel.text = product.description
-        productPriceLabel.text = String(product.price) + " ₽"
+        productPriceLabel.text = String(product.price) + " руб."
     }
     
     // MARK: - Actions
