@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class LoginViewController: BaseViewController {
 
@@ -83,6 +84,14 @@ class LoginViewController: BaseViewController {
     // MARK: - Actions
     
     @IBAction func loginButtonPressed(_ sender: UIButton) {
+        
+        /// Firebase Analytics
+
+//        Analytics.logEvent(AnalitycsEventSelectContent, parameters: [
+//            AnalyticsParameterItemID: "id-\(title!)",
+//            AnalyticsParameterItemName: title!,
+//            AnalyticsParameterContentType: "cont"])
+        
         guard let userName = userNameTextField.text,
               let password = passwordTextField.text,
               !userName.isEmpty,
@@ -109,6 +118,32 @@ class LoginViewController: BaseViewController {
     }
     
     @IBAction func registrationButtonPressed(_ sender: Any) {
+        
+        /// Firebase Crashlytics
+
+//        // Set int_key to 100.
+//        Crashlytics.crashlytics().setCustomValue(100, forKey: "int_key")
+//
+//        // Set str_key to "hello".
+//        Crashlytics.crashlytics().setCustomValue("hello", forKey: "str_key")
+//
+//        let keysAndValues = [
+//                         "string key" : "string value",
+//                         "string key 2" : "string value 2",
+//                         "boolean key" : true,
+//                         "boolean key 2" : false,
+//                         "float key" : 1.01,
+//                         "float key 2" : 2.02
+//                        ] as [String : Any]
+//
+//        Crashlytics.crashlytics().setCustomKeysAndValues(keysAndValues)
+//        Crashlytics.crashlytics().log("Test registration crash")
+//        Crashlytics.crashlytics().setUserID("123456789")
+//
+//        let numbers = [0]
+//        let _ = numbers[1]
+        
+        
         guard let registrationViewController = AppService.shared.getScreenPage(identifier: "registrationScreen") as? RegistrationViewController
         else { return }
         registrationViewController.fillLoginScreenDelegate = self
