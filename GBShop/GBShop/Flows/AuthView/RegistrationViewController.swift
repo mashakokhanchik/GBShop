@@ -19,14 +19,14 @@ class RegistrationViewController: BaseViewController {
     // MARK: - Properties
     
     let userFactory = RequestFactory().makeAuthRequestFactory()
-    //var userLogin: String?
-    //var userPassword: String?
+    var userLogin: String?
+    var userPassword: String?
     
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //title = "Реистрация"
+        title = "Реистрация"
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(viewClicked))
         view.addGestureRecognizer(tapGestureRecognizer)
     }

@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-///Реализация протокола работы с корзиной товаров.
+/// Реализация протокола работы с корзиной товаров.
 
 class Basket: AbstractRequestFactory {
     
@@ -34,36 +34,54 @@ class Basket: AbstractRequestFactory {
 
 extension Basket: BasketRequestFactory {
     
-    ///Добавление товара в корзину
+    func getBasket(userId: Int,
+                   completionHandler: @escaping (AFDataResponse<GetBasketResult>) -> Void) {
+        let requestModel = GetBasket(baseUrl: baseUrl,
+                                     userId: userId)
+        self.request(request: requestModel, completionHandler: completionHandler)
+    }
     
-    func addToBasket(idProduct: Int,
+    /// Добавление товара в корзину
+    
+    func addToBasket(productId: Int,
                      userId: Int,
                      quantity: Int,
                      completionHandler: @escaping(AFDataResponse<AddToBasketResult>) -> Void) {
         let requestModel = AddToBasket(baseUrl: baseUrl,
-                                       idProduct: idProduct,
+                                       productId: productId,
                                        userId: userId,
                                        quantity: quantity)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
-    ///Удаление товара из корзины.
+    /// Удаление товара из корзины.
     
-    func deleteFromBasket(idProduct: Int,
+    func deleteFromBasket(productId: Int,
+                          userId: Int,
                           completionHandler: @escaping (AFDataResponse<DeleteFromBasketResult>) -> Void) {
         let requestModel = DeleteFromBasket(baseUrl: baseUrl,
-                                            idProduct: idProduct)
+                                            userId: userId,
+                                            productId: productId)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
-    ///Списание денежных средств.
+    /// Очистка карзины.
+    
+    func clearBasket(userId: Int,
+                     completionHandler: @escaping (AFDataResponse<ClearBasketResult>) -> Void) {
+        let requestModel = ClearBasket(baseUrl: baseUrl,
+                                       userId: userId)
+        self.request(request: requestModel, completionHandler: completionHandler)
+    }
+    
+    /// Списание денежных средств.
     
     func payBasket(userId: Int,
-                   userMessage: String,
+                   paySumm: Int,
                    completionHandler: @escaping (AFDataResponse<PayBasketResult>) -> Void) {
         let requestModel = PayBasket(baseUrl: baseUrl,
                                      userId: userId,
-                                     userMessage: userMessage)
+                                     paySumm: paySumm)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
 
@@ -73,7 +91,19 @@ extension Basket: BasketRequestFactory {
 
 extension Basket {
     
-    ///Параметры и путь к запросу добавления товара в корзину.
+    struct GetBasket: RequestRouter {
+        
+        let baseUrl: URL
+        let method: HTTPMethod = .post
+        let path: String = "getBasket"
+        
+        let userId: Int
+        var parameters: Parameters? {
+            return ["userId": userId]
+        }
+    }
+    
+    /// Параметры и путь к запросу добавления товара в корзину.
     
     struct AddToBasket: RequestRouter {
         
@@ -81,19 +111,19 @@ extension Basket {
         let method: HTTPMethod = .post
         let path: String = "addToBasket"
         
-        let idProduct: Int
+        let productId: Int
         let userId: Int
         let quantity: Int
         var parameters: Parameters? {
             return [
-                "idProduct": idProduct,
+                "productId": productId,
                 "userId": userId,
                 "quantity": quantity]
         }
     
     }
     
-    ///Параметры и путь к запросу удвления товара из корзины.
+    /// Параметры и путь к запросу удвления товара из корзины.
     
     struct DeleteFromBasket: RequestRouter {
         
@@ -101,14 +131,32 @@ extension Basket {
         let method: HTTPMethod = .post
         let path: String = "deleteFromBasket"
         
-        let idProduct: Int
+        let userId: Int
+        let productId: Int
         var parameters: Parameters? {
-            return ["idProduct": idProduct]
+            return [
+                "userId": userId,
+                "productId": productId]
         }
     
     }
     
-    ///Параметры и путь к запросу на списание денежных средств.
+    /// Параметры и путь к запросу об очистке корзины с товарами.
+    
+    struct ClearBasket: RequestRouter {
+        
+        let baseUrl: URL
+        let method: HTTPMethod = .post
+        let path: String = "clearBasket"
+        
+        let userId: Int
+        var parameters: Parameters? {
+            return ["uderId": userId]
+        }
+        
+    }
+    
+    /// Параметры и путь к запросу на списание денежных средств.
     
     struct PayBasket: RequestRouter {
         
@@ -117,11 +165,11 @@ extension Basket {
         let path: String = "payBasket"
         
         let userId: Int
-        let userMessage: String
+        let paySumm: Int
         var parameters: Parameters? {
             return [
                 "userId": userId,
-                "userMessage": userMessage]
+                "paySumm": paySumm]
         }
         
     }

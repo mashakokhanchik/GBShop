@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-///Реализация протокола получения списка товаров, отдельного товара.
+/// Реализация протокола получения списка товаров, отдельного товара.
 
 class GoodsData: AbstractRequestFactory {
     
@@ -32,7 +32,7 @@ class GoodsData: AbstractRequestFactory {
 
 extension GoodsData: GoodsRequestFactory {
 
-    ///Получение списка товаров
+    /// Получение списка товаров
     
     func getCatalogData(completionHandler: @escaping (AFDataResponse<CatalogDataResult>) -> Void) {
         let requestModel = CatalogDataRequest(baseUrl: baseUrl)

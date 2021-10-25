@@ -8,20 +8,27 @@
 import Foundation
 import Alamofire
 
-///Протокол работы с корзиной магазина.
+/// Протокол работы с корзиной магазина.
 
 protocol BasketRequestFactory {
     
-    func addToBasket(idProduct: Int,
+    func getBasket(userId: Int,
+                   completionHandler: @escaping(AFDataResponse<GetBasketResult>) -> Void)
+    
+    func addToBasket(productId: Int,
                      userId: Int,
                      quantity: Int,
                      completionHandler: @escaping(AFDataResponse<AddToBasketResult>) -> Void)
     
-    func deleteFromBasket(idProduct: Int,
+    func deleteFromBasket(productId: Int,
+                          userId: Int,
                           completionHandler: @escaping(AFDataResponse<DeleteFromBasketResult>) -> Void)
     
+    func clearBasket(userId: Int,
+                     completionHandler: @escaping(AFDataResponse<ClearBasketResult>) -> Void)
+    
     func payBasket(userId: Int,
-                   userMessage: String,
+                   paySumm: Int,
                    completionHandler: @escaping(AFDataResponse<PayBasketResult>) -> Void)
     
 }
