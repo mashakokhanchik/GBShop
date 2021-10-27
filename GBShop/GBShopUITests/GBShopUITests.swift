@@ -37,11 +37,11 @@ class GBShopUITests: XCTestCase {
     }
     
     private func enterAuthData(login: String, password: String) {
-        let loginTextField = scrollViewsQuery.children(matching: .textField).element(boundBy: 0)
+        let loginTextField = scrollViewsQuery.textFields["login"]
         loginTextField.tap()
         loginTextField.typeText(login)
         
-        let passwordTextField = scrollViewsQuery.children(matching: .textField).element(boundBy: 1)
+        let passwordTextField = scrollViewsQuery.textFields["password"]
         passwordTextField.tap()
         passwordTextField.typeText(password)
         
@@ -51,7 +51,6 @@ class GBShopUITests: XCTestCase {
 
     func testLaunchPerformance() throws {
         if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
-            // This measures how long it takes to launch your application.
             measure(metrics: [XCTApplicationLaunchMetric()]) {
             XCUIApplication().launch()
             }

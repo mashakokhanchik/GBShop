@@ -24,6 +24,14 @@ class LoginViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        /// UITests
+        
+        userNameTextField.isAccessibilityElement = true
+        userNameTextField.accessibilityIdentifier = "login"
+        passwordTextField.isAccessibilityElement = true
+        passwordTextField.accessibilityIdentifier = "password"
+        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewClicked(_:)))
         view.addGestureRecognizer(tapGesture)
     }
