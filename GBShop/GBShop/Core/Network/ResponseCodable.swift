@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-///Класс для обработки полученного ответа для Alamofire.
+/// Класс для обработки полученного ответа для Alamofire.
 
 class CustomDecodableSerializer<T: Decodable>: DataResponseSerializerProtocol {
     

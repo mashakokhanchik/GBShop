@@ -32,7 +32,7 @@ class CatalogDataTest: XCTestCase {
                                       baseUrl: baseUrl)
         
         let catalogDataExpectation = expectation(description: "Catalog data")
-        catalogData.getCatalogData(pageNumber: "1", idCategory: "1") { (response) in
+        catalogData.getCatalogData() { (response: AFDataResponse<CatalogDataResult>) in
             switch response.result {
             case .success(let model):
                 XCTFail("Fail: \(model)")

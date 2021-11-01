@@ -11,11 +11,6 @@ import Swinject
 
 class RequestFactory {
     
-/*Если URL разбиваю на компоненты, то в функциях всё равно ипользую !, решение проблемы пока не нашла.
-Как провильно вынести baseUrl в Core-слой тоже пока не разобралась.*/
-
-//    lazy var baseUrl = URL(string: "https://protected-bayou-45049.herokuapp.com")!
-    
     lazy var baseUrl: URL? = {
         var components = URLComponents()
         components.scheme = "https"

@@ -34,7 +34,7 @@ class BasketTests: XCTestCase {
                             baseUrl: baseUrl)
         
         let basketExpectation = expectation(description: "Add to basket")
-        basket.addToBasket(idProduct: 1, quantity: 1) { (response) in
+        basket.addToBasket(productId: 1, userId: 1, quantity: 1) { (response) in
             switch response.result {
             case .success(let model):
                 XCTFail("Fail: \(model)")
@@ -60,7 +60,7 @@ class BasketTests: XCTestCase {
                             baseUrl: baseUrl)
         
         let basketExpectation = expectation(description: "Delete from basket")
-        basket.deleteFromBasket(idProduct: 1) { (response) in
+        basket.deleteFromBasket(productId: 1, userId: 1) { (response) in
             switch response.result {
             case .success(let model):
                 XCTFail("Fail: \(model)")
@@ -86,7 +86,7 @@ class BasketTests: XCTestCase {
                             baseUrl: baseUrl)
         
         let basketExpectation = expectation(description: "Pay basket")
-        basket.payBasket(userId: 1, userMessage: "Some message") { (response) in
+        basket.payBasket(userId: 1, paySumm: 1) { (response) in
             switch response.result {
             case .success(let model):
                 XCTFail("Fail: \(model)")

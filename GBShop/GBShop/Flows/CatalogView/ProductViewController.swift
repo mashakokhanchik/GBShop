@@ -72,7 +72,7 @@ class ProductViewController: BaseViewController {
     func productPageInitWith(product: GoodsByIdResult) {
         self.product = product
         productNameLabel.text = product.productName
-        //productPriceLabel.text = String(product.price) + " руб."
+        productPriceLabel.text = String(product.price) + " руб."
         productDescriptionLabel.text = product.description
         
         let imageSource = product.productImage
@@ -80,6 +80,7 @@ class ProductViewController: BaseViewController {
            let image = URL(string: imageSource) {
                productImageView.kf.setImage(with: image)
            }
+        productLoadReview()
     }
     
     func loadAddReviewScreen() {

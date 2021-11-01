@@ -32,7 +32,7 @@ class GoodsByIdTest: XCTestCase {
                                   baseUrl: baseUrl)
         
         let goodsByIdExpectation = expectation(description: "Get goods by id")
-        goodsById.getGoodsById(idProduct: "11") { (response) in
+        goodsById.getGoodsById(idProduct: 1) { (response) in
             switch response.result {
             case .success(let model):
                 XCTFail("Fail: \(model)")

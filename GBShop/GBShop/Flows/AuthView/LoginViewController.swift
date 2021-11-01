@@ -112,7 +112,7 @@ class LoginViewController: BaseViewController {
             switch response.result {
             case .success(let login):
                 DispatchQueue.main.async {
-                    self.appService.session.setUserInfo(login.user)
+                    self.appService.session.setUserInfo(login.user!)
                     self.needLoginDelegate?.willReloadData()
                     self.needLoginDelegate?.willDisappear(bool: false)
                     self.dismiss(animated: true)

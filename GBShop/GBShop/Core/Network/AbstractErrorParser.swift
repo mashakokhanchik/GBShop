@@ -7,7 +7,7 @@
 
 import Foundation
 
-///Протокол обработки ошибок.
+/// Протокол обработки ошибок.
 
 protocol AbstractErrorParser {
     
