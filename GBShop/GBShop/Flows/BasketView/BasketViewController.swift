@@ -23,7 +23,10 @@ class BasketViewController: BaseViewController {
     @IBOutlet weak var goodsCountLabel: UILabel!
     @IBOutlet weak var totalPreceLabel: UILabel!
     @IBOutlet weak var payBasketButton: UIButton!
-
+    
+    @IBOutlet weak var isNeedLoginLabel: UILabel!
+    @IBOutlet weak var isNeedLoginButton: UIButton!
+   
     // MARK: - Properties
     
     var basket: GetBasketResult?
@@ -48,6 +51,8 @@ class BasketViewController: BaseViewController {
             loadBasket()
         } else {
             login(delegate: self)
+            isNeedLoginLabel.text = "Необходима авторизация"
+            isNeedLoginButton.setTitle("Войти", for: .normal)
         }
     }
     
@@ -61,6 +66,14 @@ class BasketViewController: BaseViewController {
         goodsCountLabel.isHidden = hide
         totalPreceLabel.isHidden = hide
         payBasketButton.isHidden = hide
+        isNeedLoginLabel.isHidden = !hide
+        if items.count > 0 {
+            isNeedLoginButton.isHidden = !hide
+        } else if !isNeedLogin {
+            isNeedLoginButton.isHidden = hide
+        } else {
+            isNeedLoginButton.isHidden = !hide
+        }
     }
     
     // MARK: - Private methods
@@ -81,17 +94,20 @@ class BasketViewController: BaseViewController {
                             self.goodsCountLabel.text = String(self.basket?.itemsCount ?? 0)
                         } else {
                             self.willDisappear(bool: true)
+                            self.isNeedLoginLabel.text = "Корзина пуста"
                         }
                     }
                 case .failure(_):
                     DispatchQueue.main.async {
                         self.willDisappear(bool: true)
+                        self.isNeedLoginLabel.text = "Невозможно загрузить данные"
                         self.showErrorMessage(message: "Невозможно загрузить данные")
                     }
                 }
             }
         } else {
             willDisappear(bool: true)
+            isNeedLoginLabel.text = "Невозможно загрузить данные"
         }
     }
     
@@ -156,6 +172,10 @@ class BasketViewController: BaseViewController {
         cleanBasket()
     }
     
+    @IBAction func isNeedLoginButton(_ sender: Any) {
+        login(delegate: self)
+    }
+
 }
 
 extension BasketViewController: UITableViewDelegate, UITableViewDataSource {
@@ -208,7 +228,8 @@ extension BasketViewController: NeedLoginDelegate {
     }
     
     func willDisappear(bool: Bool) {
-        toggleBasketInterface()
+        toggleBasketInterface(hide: bool)
+        isNeedLoginLabel.isHidden = !bool
     }
     
 }

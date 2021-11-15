@@ -17,8 +17,14 @@ class ProfileViewController: BaseViewController {
     @IBOutlet weak var repeatNewPasswordTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     
+    @IBOutlet weak var saveButton: UIButton!
+    @IBOutlet weak var logoutButton: UIButton!
+    
     @IBOutlet var userDataProfileLabels: [UILabel]!
     @IBOutlet var userDataPrifileTextField: [UITextField]!
+    
+    @IBOutlet weak var isNeedLoginLabel: UILabel!
+    @IBOutlet weak var isNeedLoginButton: UIButton!
     
     // MARK: - Properties
     
@@ -41,7 +47,9 @@ class ProfileViewController: BaseViewController {
         if !isNeedLogin {
             loadProfile()
         } else {
-            loginButtonPressed(self)
+            login(delegate: self)
+            isNeedLoginLabel.text = "Необходима авторизация"
+            isNeedLoginButton.setTitle("Войти", for: .normal)
         }
     }
     
@@ -63,12 +71,16 @@ class ProfileViewController: BaseViewController {
                     DispatchQueue.main.async {
                         self.willDisappear(bool: true)
                         self.showErrorMessage(message: "Невозможно загрузить данные")
+                        self.isNeedLoginLabel.text = "Невозможно загрузить данные"
+                        self.isNeedLoginButton.setTitle("Выйти", for: .normal)
                     }
                 }
             }
         } else {
             willDisappear(bool: true)
             showErrorMessage(message: "Невозможно загрузит данные")
+            isNeedLoginLabel.text = "Невозможно загрузить данные"
+            isNeedLoginButton.setTitle("Выйти", for: .normal)
         }
     }
     
@@ -87,6 +99,10 @@ class ProfileViewController: BaseViewController {
         for userDataTextField in userDataPrifileTextField {
             userDataTextField.isHidden = hide
         }
+        saveButton.isHidden = hide
+        logoutButton.isHidden = hide
+        isNeedLoginLabel.isHidden = !hide
+        isNeedLoginButton.isHidden = !hide
     }
     
     // MARK: - Methods
@@ -95,13 +111,48 @@ class ProfileViewController: BaseViewController {
         view.endEditing(true)
     }
     
+    func logout() {
+        if let userId = userId {
+            userFactory.logout(userId: userId) { [ weak self] response in
+                guard let self = self else { return }
+                
+                switch response.result {
+                case .success(_):
+                    DispatchQueue.main.async {
+                        self.showLogoutMessage(message: "Вы уыеренны, что хотите выйти?")
+                    }
+                case .failure(_):
+                    DispatchQueue.main.async {
+                        self.showErrorMessage(message: "При попытке выхода произошла ошибка")
+                    }
+                }
+            }
+        } else {
+            showErrorMessage(message: "При попытке выхода произошла ошибка")
+        }
+        isNeedLoginLabel.text = "Необходима авторизация"
+        isNeedLoginButton.setTitle("Войти", for: .normal)
+    }
+    
+    func showLogoutMessage(message: String, handler: ((UIAlertAction) -> Void)? = nil) {
+        let alertViewController = UIAlertController(title: "", message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "Выйти", style: .default) { _ in
+            self.appService.session.killUserInfo()
+            self.showProfileInterface()
+        }
+        let noAction = UIAlertAction(title: "Отмена", style: .default, handler: handler)
+        alertViewController.addAction(okAction)
+        alertViewController.addAction(noAction)
+        present(alertViewController, animated: true)
+    }
+    
     // MARK: - Actions
     
-    @IBAction func loginButtonPressed(_ sender: Any) {
+    @IBAction func isNeedLoginButtonPressed(_ sender: Any) {
         if !isNeedLogin {
-            logoutButtonPressed(self)
+            logout()
         } else {
-            loginButtonPressed(self)
+            login(delegate: self)
         }
     }
     
@@ -170,37 +221,9 @@ class ProfileViewController: BaseViewController {
     }
     
     @IBAction func logoutButtonPressed(_ sender: Any) {
-        if let userId = userId {
-            userFactory.logout(userId: userId) { [ weak self] response in
-                guard let self = self else { return }
-                
-                switch response.result {
-                case .success(_):
-                    DispatchQueue.main.async {
-                        self.showLogoutMessage(message: "Вы уыеренны, что хотите выйти?")
-                    }
-                case .failure(_):
-                    DispatchQueue.main.async {
-                        self.showErrorMessage(message: "При попытке выхода произошла ошибка")
-                    }
-                }
-            }
-        } else {
-            showErrorMessage(message: "При попытке выхода произошла ошибка")
-        }
+        logout()
     }
     
-    func showLogoutMessage(message: String, handler: ((UIAlertAction) -> Void)? = nil) {
-        let alertViewController = UIAlertController(title: "", message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "Выйти", style: .default) { _ in
-            self.appService.session.killUserInfo()
-        }
-        let noAction = UIAlertAction(title: "Отмена", style: .default, handler: handler)
-        alertViewController.addAction(okAction)
-        alertViewController.addAction(noAction)
-        present(alertViewController, animated: true)
-    }
-
 }
 
 extension ProfileViewController: NeedLoginDelegate {

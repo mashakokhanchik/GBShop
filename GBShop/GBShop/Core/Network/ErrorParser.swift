@@ -7,7 +7,7 @@
 
 import Foundation
 
-///Реализация протокола обработки ошибок.
+/// Реализация протокола обработки ошибок.
 
 class ErrorParser: AbstractErrorParser {
     

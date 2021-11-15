@@ -34,7 +34,7 @@ class ReviewsTest: XCTestCase {
                              baseUrl: baseUrl)
         
         let reviewExpectation = expectation(description: "To get review")
-        review.getReview(pageNumber: "1") { (response) in
+        review.getReview(productId: 1) { (response) in
             switch response.result {
             case .success(let model):
                 XCTFail("Fail: \(model)")
@@ -59,8 +59,15 @@ class ReviewsTest: XCTestCase {
                              sessionManager: session,
                              baseUrl: baseUrl)
         
+        let addReviewModel = Review(idReview: nil,
+                                    productId: 1,
+                                    login: "Somebody",
+                                    email: "some@some.ru",
+                                    title: "Some title",
+                                    textReview: "Some text")
+        
         let reviewExpectation = expectation(description: "To add review")
-        review.addReview(userId: 1, userReview: "Some review") { (response) in
+        review.addReview(productId: 1, review: addReviewModel) { (response) in
             switch response.result {
             case .success(let model):
                 XCTFail("Fail: \(model)")
@@ -86,7 +93,7 @@ class ReviewsTest: XCTestCase {
                             baseUrl: baseUrl)
         
         let reviewExpectation = expectation(description: "To remove review")
-        review.removeReview(idReview: 1, removeMessage: "Some message") { (response) in
+        review.removeReview(idReview: 1) { (response) in
             switch response.result {
             case .success(let model):
                 XCTFail("Fail: \(model)")

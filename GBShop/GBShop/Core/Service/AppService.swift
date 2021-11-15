@@ -39,7 +39,7 @@ class AppService {
         let basket = getScreenPage(identifier: "basketScreen")
         
         let tabBarBuilder = TabBarBuilder()
-        
+    
         tabBarBuilder.addNavigationController(viewController: catalog,
                                               title: "Каталог",
                                               image: "folder",

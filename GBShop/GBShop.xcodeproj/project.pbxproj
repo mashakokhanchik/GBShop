@@ -20,12 +20,13 @@
 		E1234CB426E4CAF400AE8FE5 /* Reviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1234CB326E4CAF400AE8FE5 /* Reviews.swift */; };
 		E1234F4126F71CF80099AE95 /* ReviewsTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1234F4026F71CF80099AE95 /* ReviewsTest.swift */; };
 		E1234F4426F87CD40099AE95 /* BasketTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1234F4326F87CD40099AE95 /* BasketTests.swift */; };
+		E1376750272ECB0700A7EADA /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E137674F272ECB0700A7EADA /* SnapshotHelper.swift */; };
+		E1376752272ECCEA00A7EADA /* SnapshotGBShopUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1376751272ECCEA00A7EADA /* SnapshotGBShopUITests.swift */; };
 		E144E89726F0AF890095CB9C /* BasketResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = E144E89626F0AF890095CB9C /* BasketResult.swift */; };
 		E144E89D26F0B0AF0095CB9C /* BasketRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E144E89C26F0B0AF0095CB9C /* BasketRequestFactory.swift */; };
 		E144E8A326F0B4C20095CB9C /* Basket.swift in Sources */ = {isa = PBXBuildFile; fileRef = E144E8A226F0B4C20095CB9C /* Basket.swift */; };
 		E14BBBFB26B95BE500AD6A0B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14BBBFA26B95BE500AD6A0B /* AppDelegate.swift */; };
 		E14BBBFD26B95BE500AD6A0B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14BBBFC26B95BE500AD6A0B /* SceneDelegate.swift */; };
-		E14BBBFF26B95BE500AD6A0B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14BBBFE26B95BE500AD6A0B /* ViewController.swift */; };
 		E14BBC0226B95BE500AD6A0B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E14BBC0026B95BE500AD6A0B /* Main.storyboard */; };
 		E14BBC0426B95BE600AD6A0B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E14BBC0326B95BE600AD6A0B /* Assets.xcassets */; };
 		E14BBC0726B95BE600AD6A0B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E14BBC0526B95BE600AD6A0B /* LaunchScreen.storyboard */; };
@@ -98,13 +99,14 @@
 		E1234CB326E4CAF400AE8FE5 /* Reviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reviews.swift; sourceTree = "<group>"; };
 		E1234F4026F71CF80099AE95 /* ReviewsTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsTest.swift; sourceTree = "<group>"; };
 		E1234F4326F87CD40099AE95 /* BasketTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketTests.swift; sourceTree = "<group>"; };
+		E137674F272ECB0700A7EADA /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
+		E1376751272ECCEA00A7EADA /* SnapshotGBShopUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotGBShopUITests.swift; sourceTree = "<group>"; };
 		E144E89626F0AF890095CB9C /* BasketResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketResult.swift; sourceTree = "<group>"; };
 		E144E89C26F0B0AF0095CB9C /* BasketRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasketRequestFactory.swift; sourceTree = "<group>"; };
 		E144E8A226F0B4C20095CB9C /* Basket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Basket.swift; sourceTree = "<group>"; };
 		E14BBBF726B95BE500AD6A0B /* GBShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GBShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E14BBBFA26B95BE500AD6A0B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E14BBBFC26B95BE500AD6A0B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E14BBBFE26B95BE500AD6A0B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		E14BBC0126B95BE500AD6A0B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E14BBC0326B95BE600AD6A0B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E14BBC0626B95BE600AD6A0B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -315,6 +317,8 @@
 		E14BBC1B26B95BE600AD6A0B /* GBShopUITests */ = {
 			isa = PBXGroup;
 			children = (
+				E137674F272ECB0700A7EADA /* SnapshotHelper.swift */,
+				E1376751272ECCEA00A7EADA /* SnapshotGBShopUITests.swift */,
 				E14BBC1C26B95BE600AD6A0B /* GBShopUITests.swift */,
 				E14BBC1E26B95BE600AD6A0B /* Info.plist */,
 			);
@@ -377,7 +381,6 @@
 				E1B4873F27141A9800A09868 /* ReviewsView */,
 				E1F45C792719882A00669381 /* BasketView */,
 				E14BBC0026B95BE500AD6A0B /* Main.storyboard */,
-				E14BBBFE26B95BE500AD6A0B /* ViewController.swift */,
 			);
 			name = Flows;
 			path = ../Flows;
@@ -822,7 +825,6 @@
 				E1234CB426E4CAF400AE8FE5 /* Reviews.swift in Sources */,
 				E18C4B8326C7D2C300DC9ACC /* RequestFactory.swift in Sources */,
 				E1234CAF26E4C58900AE8FE5 /* ReviewResult.swift in Sources */,
-				E14BBBFF26B95BE500AD6A0B /* ViewController.swift in Sources */,
 				E14C551C26FF09A600D9A1CF /* AppService.swift in Sources */,
 				E18C4B7426C7C23200DC9ACC /* ResponseCodable.swift in Sources */,
 				E14BBBFB26B95BE500AD6A0B /* AppDelegate.swift in Sources */,
@@ -862,6 +864,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E14BBC1D26B95BE600AD6A0B /* GBShopUITests.swift in Sources */,
+				E1376752272ECCEA00A7EADA /* SnapshotGBShopUITests.swift in Sources */,
+				E1376750272ECB0700A7EADA /* SnapshotHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

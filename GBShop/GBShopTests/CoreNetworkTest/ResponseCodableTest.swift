@@ -34,7 +34,7 @@ struct ErrorParserStub: AbstractErrorParser {
 class ResponseCodableTest: XCTestCase {
 
     let expectation = XCTestExpectation(description: "Download https://failUrl")
-    var errorParser = ErrorParserStub()
+    var errorParser: ErrorParserStub!
 
     override func setUp() {
         super.setUp()
@@ -43,23 +43,22 @@ class ResponseCodableTest: XCTestCase {
     
     override func tearDown() {
         super.tearDown()
-        errorParser = ErrorParserStub()
+        errorParser = nil
     }
     
-    func testExample() throws {
+    func testExample() {
         let errorParser = ErrorParserStub()
         AF
-            /// Необходимо поменять https
-            .request("https://failUrl")
+            .request("https://protected-bayou-45049.herokuapp.com")
             .responseCodable(errorParser: errorParser) { [weak self] (response: DataResponse<PostStub, AFError>) in
                 switch response.result {
                 case .success(_): break
                 case .failure(let error):
                     XCTFail(error.localizedDescription)
                 }
-                self!.expectation.fulfill()
+                self?.expectation.fulfill()
             }
         wait(for: [expectation], timeout: 5.0)
-        }
+    }
 
 }

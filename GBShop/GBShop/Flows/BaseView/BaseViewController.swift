@@ -28,8 +28,8 @@ class BaseViewController: UIViewController {
     
     var appService = AppService.shared
     var userId: Int? { return AppService.shared.session.userInfo?.id }
-    var userName: String? { return AppService.shared.session.userInfo?.login}
-    var isNeedLogin: Bool { return userId == nil}
+    var userName: String? { return AppService.shared.session.userInfo?.login }
+    var isNeedLogin: Bool { return userId == nil }
     var userNameLogin: String?
     var passwordLogin: String?
     var productId: Int? { return AppService.shared.session.productInfo?.productId }

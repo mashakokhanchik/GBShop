@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-///Фабрика, отвечающая за создание запросов.
+/// Фабрика, отвечающая за создание запросов.
 
 protocol AbstractRequestFactory {
     

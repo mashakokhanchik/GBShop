@@ -24,6 +24,14 @@ class LoginViewController: BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        /// UITests
+        
+        userNameTextField.isAccessibilityElement = true
+        userNameTextField.accessibilityIdentifier = "login"
+        passwordTextField.isAccessibilityElement = true
+        passwordTextField.accessibilityIdentifier = "password"
+        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(viewClicked(_:)))
         view.addGestureRecognizer(tapGesture)
     }
@@ -104,7 +112,7 @@ class LoginViewController: BaseViewController {
             switch response.result {
             case .success(let login):
                 DispatchQueue.main.async {
-                    self.appService.session.setUserInfo(login.user)
+                    self.appService.session.setUserInfo(login.user!)
                     self.needLoginDelegate?.willReloadData()
                     self.needLoginDelegate?.willDisappear(bool: false)
                     self.dismiss(animated: true)
